@@ -80,6 +80,9 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ CDC_CumulativeDischargeCurrent m257 : 311|32@0+ (0.1,0) [0|1000000] "Ah" Vector__XXX
  SG_ CEC_CumulativeEnergyCharged m257 : 343|32@0+ (0.1,0) [0|1000000] "kWh" Vector__XXX
  SG_ CED_CumulativeEnergyDischarged m257 : 375|32@0+ (0.1,0) [0|1000000] "kWh" Vector__XXX
+ SG_ DriveMotorSpeed1 m257 : 463|16@0- (0,0) [-10100|10100] "rpm" Vector__XXX
+ SG_ DriveMotorSpeed2 m257 : 479|16@0- (0,0) [-10100|10100] "rpm" Vector__XXX
+
  SG_ BMSMainRelay m257 : 104|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ BMSIgnition m257 : 434|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ BatteryDCVoltage m257 : 135|16@0+ (0.1,0) [0|0] "V" Vector__XXX
