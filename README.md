@@ -1,4 +1,4 @@
-# e-gmp-tools
+# gv70-tools
 
 
 Shifting bits in DBC:
@@ -18,6 +18,8 @@ CellVoltage5: b'\x03\x22\x01\x0B\xAA\xAA\xAA\xAA'
 CellVoltage6: b'\x03\x22\x01\x0C\xAA\xAA\xAA\xAA'
 Temperatures: b'\x03\x22\x01\x00\xAA\xAA\xAA\xAA'
 Tires: b'\x03\x22\xC0\x0B\xAA\xAA\xAA\xAA'
-
-
 ```
+
+Basis for ev6.dbc:
+https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/issues/58
+https://www.csselectronics.com/pages/kia-ev6-can-bus-data-uds-dbc

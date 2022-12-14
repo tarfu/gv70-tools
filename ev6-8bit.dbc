@@ -43,11 +43,23 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ MinCellVoltage m257 : 231|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
  SG_ MaxCellVoltage m257 : 215|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
  SG_ StateOfChargeDisplay m261 : 279|8@0+ (0.5,3) [0|0] "%" Vector__XXX
- SG_ BatteryTemperature1 m257 : 159|8@0- (1,0) [0|0] "degC" Vector__XXX
- SG_ BatteryTemperature2 m257 : 167|8@0- (1,0) [0|0] "degC" Vector__XXX
- SG_ BatteryTemperature3 m257 : 175|8@0- (1,0) [0|0] "degC" Vector__XXX
- SG_ BatteryTemperature4 m257 : 183|8@0- (1,0) [0|0] "degC" Vector__XXX
- SG_ BatteryTemperature5 m257 : 191|8@0- (1,0) [0|0.5] "degC" Vector__XXX
+ SG_ BatteryTemperature01 m257 : 159|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature02 m257 : 167|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature03 m257 : 175|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature04 m257 : 183|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature05 m257 : 191|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature06 m261 : 103|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature07 m261 : 111|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature08 m261 : 119|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature09 m261 : 127|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature10 m261 : 135|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature11 m261 : 143|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature12 m261 : 151|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature13 m261 : 343|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature14 m261 : 351|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature15 m261 : 359|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryTemperature16 m261 : 367|8@0- (1,0) [0|0] "degC" Vector__XXX
+ SG_ BatteryCellVoltageDeviation m261 : 191|8@0+ (0.02,0) [0|0] "V" Vector__XXX
  SG_ BatteryMinTemperature m257 : 151|8@0- (1,0) [0|0] "degC" Vector__XXX
  SG_ BatteryMaxTemperature m257 : 143|8@0- (1,0) [0|0] "degC" Vector__XXX
  SG_ BatteryHeaterTemperature1 m261 : 215|8@0- (1,0) [0|0] "degC" Vector__XXX
@@ -56,120 +68,123 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ BatteryFanStatus m257 : 247|8@0+ (1,0) [0|9] "" Vector__XXX
  SG_ NormalChargePort m257 : 101|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ RapidChargePort m257 : 102|1@0+ (1,0) [0|0] "" Vector__XXX
- SG_ OperatingTime m257 : 375|32@0+ (0.00027777777,0) [0|1000000] "hours" Vector__XXX
- SG_ MinDeterioration m261 : 247|16@0+ (0.1,0) [0|100] "%" Vector__XXX
- SG_ MinDeteriorationCellNo m261 : 271|8@0+ (1,0) [0|98] "" Vector__XXX
+ SG_ OperatingTime m257 : 399|32@0+ (0.00027777777,0) [0|1000000] "hours" Vector__XXX
+ SG_ StateOfHealth m261 : 231|16@0+ (0.1,0) [0|100] "%" Vector__XXX
+ SG_ MaximumDeteriorationCellNo m261 : 247|8@0+ (0,0) [0|192] "" Vector__XXX
+ SG_ MinimumDeterioration m261 : 255|16@0+ (0.1,0) [0|100] "%" Vector__XXX
+ SG_ MinimumDeteriorationCellNo m261 : 271|8@0+ (0,0) [0|192] "" Vector__XXX
  SG_ MinCellVoltageCellNo m257 : 239|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ MaxCellVoltageCellNo m257 : 223|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ Charging m257 : 103|1@0+ (1,0) [0|0] "" Vector__XXX
- SG_ CDC_CumulativeDischargeCurrent m257 : 279|32@0+ (0.1,0) [0|1000000] "Ah" Vector__XXX
- SG_ CEC_CumulativeEnergyCharged m257 : 311|32@0+ (0.1,0) [0|1000000] "kWh" Vector__XXX
- SG_ CED_CumulativeEnergyDischarged m257 : 343|32@0+ (0.1,0) [0|1000000] "kWh" Vector__XXX
+ SG_ CCC_CumulativeChargeCurrent m257 : 271|32@0+ (0.1,0) [0|1000000] "Ah" Vector__XXX
+ SG_ CDC_CumulativeDischargeCurrent m257 : 303|32@0+ (0.1,0) [0|1000000] "Ah" Vector__XXX
+ SG_ CEC_CumulativeEnergyCharged m257 : 335|32@0+ (0.1,0) [0|1000000] "kWh" Vector__XXX
+ SG_ CED_CumulativeEnergyDischarged m257 : 367|32@0+ (0.1,0) [0|1000000] "kWh" Vector__XXX
  SG_ BMSMainRelay m257 : 96|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ BMSIgnition m257 : 426|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ BatteryDCVoltage m257 : 127|16@0+ (0.1,0) [0|0] "V" Vector__XXX
  SG_ BatteryCurrent m257 : 111|16@0- (0.1,0) [-230|230] "A" Vector__XXX
  SG_ BatteryAvailableChargePower m261 : 159|16@0+ (0.01,0) [0|270] "kW" Vector__XXX
  SG_ BatteryAvailableDischargePower m261 : 175|16@0+ (0.01,0) [0|270] "kW" Vector__XXX
- SG_ CellVoltage01 m258 : 63|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage02 m258 : 71|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage03 m258 : 79|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage04 m258 : 87|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage05 m258 : 95|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage06 m258 : 103|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage07 m258 : 111|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage08 m258 : 119|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage09 m258 : 127|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage10 m258 : 135|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage11 m258 : 143|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage12 m258 : 151|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage13 m258 : 159|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage14 m258 : 167|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage15 m258 : 175|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage16 m258 : 183|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage17 m258 : 191|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage18 m258 : 199|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage19 m258 : 207|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage20 m258 : 215|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage21 m258 : 223|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage22 m258 : 231|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage23 m258 : 239|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage24 m258 : 247|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage25 m258 : 255|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage26 m258 : 263|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage27 m258 : 271|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage28 m258 : 279|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage29 m258 : 287|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage30 m258 : 295|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage31 m258 : 303|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage32 m258 : 311|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage33 m259 : 63|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage34 m259 : 71|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage35 m259 : 79|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage36 m259 : 87|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage37 m259 : 95|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage38 m259 : 103|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage39 m259 : 111|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage40 m259 : 119|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage41 m259 : 127|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage42 m259 : 135|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage43 m259 : 143|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage44 m259 : 151|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage45 m259 : 159|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage46 m259 : 167|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage47 m259 : 175|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage48 m259 : 183|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage49 m259 : 191|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage50 m259 : 199|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage51 m259 : 207|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage52 m259 : 215|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage53 m259 : 223|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage54 m259 : 231|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage55 m259 : 239|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage56 m259 : 247|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage57 m259 : 255|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage58 m259 : 263|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage59 m259 : 271|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage60 m259 : 279|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage61 m259 : 287|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage62 m259 : 295|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage63 m259 : 303|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage64 m259 : 311|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage65 m260 : 63|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage66 m260 : 71|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage67 m260 : 79|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage68 m260 : 87|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage69 m260 : 95|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage70 m260 : 103|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage71 m260 : 111|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage72 m260 : 119|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage73 m260 : 127|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage74 m260 : 135|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage75 m260 : 143|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage76 m260 : 151|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage77 m260 : 159|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage78 m260 : 167|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage79 m260 : 175|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage80 m260 : 183|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage81 m260 : 191|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage82 m260 : 199|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage83 m260 : 207|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage84 m260 : 215|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage85 m260 : 223|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage86 m260 : 231|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage87 m260 : 239|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage88 m260 : 247|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage89 m260 : 255|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage90 m260 : 263|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage91 m260 : 271|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage92 m260 : 279|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage93 m260 : 287|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage94 m260 : 295|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage95 m260 : 303|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage96 m260 : 311|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage97 m266 : 63|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage98 m266 : 71|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ CellVoltage99 m266 : 79|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage001 m258 : 63|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage002 m258 : 71|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage003 m258 : 79|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage004 m258 : 87|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage005 m258 : 95|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage006 m258 : 103|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage007 m258 : 111|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage008 m258 : 119|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage009 m258 : 127|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage010 m258 : 135|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage011 m258 : 143|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage012 m258 : 151|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage013 m258 : 159|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage014 m258 : 167|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage015 m258 : 175|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage016 m258 : 183|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage017 m258 : 191|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage018 m258 : 199|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage019 m258 : 207|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage020 m258 : 215|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage021 m258 : 223|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage022 m258 : 231|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage023 m258 : 239|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage024 m258 : 247|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage025 m258 : 255|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage026 m258 : 263|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage027 m258 : 271|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage028 m258 : 279|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage029 m258 : 287|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage030 m258 : 295|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage031 m258 : 303|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage032 m258 : 311|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage033 m259 : 63|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage034 m259 : 71|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage035 m259 : 79|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage036 m259 : 87|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage037 m259 : 95|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage038 m259 : 103|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage039 m259 : 111|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage040 m259 : 119|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage041 m259 : 127|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage042 m259 : 135|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage043 m259 : 143|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage044 m259 : 151|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage045 m259 : 159|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage046 m259 : 167|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage047 m259 : 175|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage048 m259 : 183|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage049 m259 : 191|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage050 m259 : 199|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage051 m259 : 207|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage052 m259 : 215|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage053 m259 : 223|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage054 m259 : 231|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage055 m259 : 239|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage056 m259 : 247|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage057 m259 : 255|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage058 m259 : 263|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage059 m259 : 271|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage060 m259 : 279|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage061 m259 : 287|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage062 m259 : 295|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage063 m259 : 303|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage064 m259 : 311|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage065 m260 : 63|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage066 m260 : 71|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage067 m260 : 79|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage068 m260 : 87|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage069 m260 : 95|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage070 m260 : 103|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage071 m260 : 111|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage072 m260 : 119|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage073 m260 : 127|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage074 m260 : 135|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage075 m260 : 143|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage076 m260 : 151|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage077 m260 : 159|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage078 m260 : 167|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage079 m260 : 175|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage080 m260 : 183|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage081 m260 : 191|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage082 m260 : 199|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage083 m260 : 207|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage084 m260 : 215|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage085 m260 : 223|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage086 m260 : 231|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage087 m260 : 239|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage088 m260 : 247|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage089 m260 : 255|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage090 m260 : 263|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage091 m260 : 271|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage092 m260 : 279|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage093 m260 : 287|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage094 m260 : 295|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage095 m260 : 303|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage096 m260 : 311|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage097 m266 : 63|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage098 m266 : 71|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
+ SG_ CellVoltage099 m266 : 79|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
  SG_ CellVoltage100 m266 : 87|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
  SG_ CellVoltage101 m266 : 95|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
  SG_ CellVoltage102 m266 : 103|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
@@ -251,7 +266,8 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ CellVoltage178 m268 : 199|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
  SG_ CellVoltage179 m268 : 207|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
  SG_ CellVoltage180 m268 : 215|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ StateOfHealth m261 : 231|16@0+ (0.1,0) [0|100] "%" Vector__XXX
+
+
 
 BO_ 1979 Temperature: 54 Vector__XXX
  SG_ IndoorTemperature m256 : 71|8@0+ (0.5,-40) [-50|50] "degC" Vector__XXX
@@ -302,10 +318,23 @@ SG_MUL_VAL_ 2028 response service 98-98;
 SG_MUL_VAL_ 2028 MinCellVoltage response 257-257;
 SG_MUL_VAL_ 2028 MaxCellVoltage response 257-257;
 SG_MUL_VAL_ 2028 StateOfChargeDisplay response 261-261;
-SG_MUL_VAL_ 2028 BatteryTemperature1 response 257-257;
-SG_MUL_VAL_ 2028 BatteryTemperature2 response 257-257;
-SG_MUL_VAL_ 2028 BatteryTemperature3 response 257-257;
-SG_MUL_VAL_ 2028 BatteryTemperature4 response 257-257;
+SG_MUL_VAL_ 2028 BatteryTemperature01 response 257-257;
+SG_MUL_VAL_ 2028 BatteryTemperature02 response 257-257;
+SG_MUL_VAL_ 2028 BatteryTemperature03 response 257-257;
+SG_MUL_VAL_ 2028 BatteryTemperature04 response 257-257;
+SG_MUL_VAL_ 2028 BatteryTemperature05 response 257-257;
+SG_MUL_VAL_ 2028 BatteryTemperature06 response 261-261;
+SG_MUL_VAL_ 2028 BatteryTemperature07 response 261-261;
+SG_MUL_VAL_ 2028 BatteryTemperature08 response 261-261;
+SG_MUL_VAL_ 2028 BatteryTemperature09 response 261-261;
+SG_MUL_VAL_ 2028 BatteryTemperature10 response 261-261;
+SG_MUL_VAL_ 2028 BatteryTemperature11 response 261-261;
+SG_MUL_VAL_ 2028 BatteryTemperature12 response 261-261;
+SG_MUL_VAL_ 2028 BatteryTemperature13 response 261-261;
+SG_MUL_VAL_ 2028 BatteryTemperature14 response 261-261;
+SG_MUL_VAL_ 2028 BatteryTemperature15 response 261-261;
+SG_MUL_VAL_ 2028 BatteryTemperature16 response 261-261;
+SG_MUL_VAL_ 2028 BatteryCellVoltageDeviation response 261-261;
 SG_MUL_VAL_ 2028 BatteryMinTemperature response 257-257;
 SG_MUL_VAL_ 2028 BatteryMaxTemperature response 257-257;
 SG_MUL_VAL_ 2028 BatteryHeaterTemperature1 response 261-261;
@@ -318,9 +347,13 @@ SG_MUL_VAL_ 2028 RapidChargePort response 257-257;
 SG_MUL_VAL_ 2028 OperatingTime response 257-257;
 SG_MUL_VAL_ 2028 MinDeterioration response 261-261;
 SG_MUL_VAL_ 2028 MinDeteriorationCellNo response 261-261;
+SG_MUL_VAL_ 2028 MaximumDeteriorationCellNo response 261-261;
+SG_MUL_VAL_ 2028 MinimumDeterioration response 261-261;
+SG_MUL_VAL_ 2028 MinimumDeteriorationCellNo response 261-261;
 SG_MUL_VAL_ 2028 MinCellVoltageCellNo response 257-257;
 SG_MUL_VAL_ 2028 MaxCellVoltageCellNo response 257-257;
 SG_MUL_VAL_ 2028 Charging response 257-257;
+SG_MUL_VAL_ 2028 CCC_CumulativeChargeCurrent response 257-257;
 SG_MUL_VAL_ 2028 CDC_CumulativeDischargeCurrent response 257-257;
 SG_MUL_VAL_ 2028 CEC_CumulativeEnergyCharged response 257-257;
 SG_MUL_VAL_ 2028 CED_CumulativeEnergyDischarged response 257-257;
@@ -330,26 +363,187 @@ SG_MUL_VAL_ 2028 BatteryDCVoltage response 257-257;
 SG_MUL_VAL_ 2028 BatteryCurrent response 257-257;
 SG_MUL_VAL_ 2028 BatteryAvailableChargePower response 261-261;
 SG_MUL_VAL_ 2028 BatteryAvailableDischargePower response 261-261;
-SG_MUL_VAL_ 2028 CellVoltage01 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage02 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage03 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage04 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage05 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage06 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage07 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage08 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage09 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage10 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage11 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage12 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage13 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage14 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage15 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage16 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage17 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage18 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage19 response 258-258;
-SG_MUL_VAL_ 2028 CellVoltage20 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage001 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage002 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage003 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage004 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage005 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage006 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage007 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage008 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage009 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage010 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage011 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage012 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage013 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage014 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage015 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage016 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage017 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage018 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage019 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage020 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage021 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage022 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage023 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage024 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage025 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage026 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage027 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage028 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage029 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage030 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage031 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage032 response 258-258;
+SG_MUL_VAL_ 2028 CellVoltage033 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage034 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage035 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage036 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage037 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage038 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage039 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage040 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage041 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage042 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage043 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage044 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage045 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage046 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage047 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage048 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage049 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage050 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage051 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage052 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage053 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage054 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage055 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage056 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage057 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage058 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage059 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage060 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage061 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage062 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage063 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage064 response 259-259;
+SG_MUL_VAL_ 2028 CellVoltage065 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage066 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage067 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage068 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage069 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage070 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage071 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage072 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage073 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage074 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage075 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage076 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage077 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage078 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage079 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage080 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage081 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage082 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage083 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage084 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage085 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage086 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage087 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage088 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage089 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage090 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage091 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage092 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage093 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage094 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage095 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage096 response 260-260;
+SG_MUL_VAL_ 2028 CellVoltage097 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage098 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage099 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage100 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage101 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage102 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage103 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage104 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage105 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage106 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage107 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage108 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage109 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage110 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage111 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage112 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage113 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage114 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage115 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage116 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage117 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage118 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage119 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage120 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage121 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage122 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage123 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage124 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage125 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage126 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage127 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage128 response 266-266;
+SG_MUL_VAL_ 2028 CellVoltage129 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage130 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage131 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage132 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage133 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage134 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage135 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage136 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage137 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage138 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage139 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage140 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage141 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage142 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage143 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage144 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage145 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage146 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage147 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage148 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage149 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage150 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage151 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage152 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage153 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage154 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage155 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage156 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage157 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage158 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage159 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage160 response 267-267;
+SG_MUL_VAL_ 2028 CellVoltage161 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage162 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage163 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage164 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage165 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage166 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage167 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage168 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage169 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage170 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage171 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage172 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage173 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage174 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage175 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage176 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage177 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage178 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage179 response 268-268;
+SG_MUL_VAL_ 2028 CellVoltage180 response 268-268;
+
 SG_MUL_VAL_ 2028 StateOfHealth response 261-261;
 SG_MUL_VAL_ 1979 IndoorTemperature response 256-256;
 SG_MUL_VAL_ 1979 response service 98-98;
