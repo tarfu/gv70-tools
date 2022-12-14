@@ -23,3 +23,9 @@ Tires: b'\x03\x22\xC0\x0B\xAA\xAA\xAA\xAA'
 Basis for ev6.dbc:
 https://github.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/issues/58
 https://www.csselectronics.com/pages/kia-ev6-can-bus-data-uds-dbc
+
+
+Getting GPS location in docker (yes the trailing / is needed) host networking assumed:
+```
+curl -vvv -X POST -H "Content-Type: application/json" -d '["ec2x.gnss_location"]' http://localhost:9000/dongle/94820371-fbcc-2338-ca38-2ca83b77c293/execute/
+```
