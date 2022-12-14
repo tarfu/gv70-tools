@@ -11,9 +11,9 @@ from can.interfaces.socketcan import SocketcanBus
 
 def pad_payload(data, length=62) -> bytearray:
     data2 = data.ljust(length, b'\0')
-    padded = bytearray(b'\x00')
-    padded.extend(data2)
-    return padded
+    #padded = bytearray(b'\x00') # Not needed with new dbc
+    #padded.extend(data2) # Not needed with new dbc
+    return data2
 
 def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
