@@ -82,6 +82,10 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ CED_CumulativeEnergyDischarged m257 : 375|32@0+ (0.1,0) [0|1000000] "kWh" Vector__XXX
  SG_ DriveMotorSpeed1 m257 : 463|16@0- (0,0) [-10100|10100] "rpm" Vector__XXX
  SG_ DriveMotorSpeed2 m257 : 479|16@0- (0,0) [-10100|10100] "rpm" Vector__XXX
+ SG_ InverterCapacitorVoltage m257 : 447|16@0+ (0,0) [0|840] "V" Vector__XXX
+ SG_ IsolationResistance m257 : 495|16@0+ (0,0) [0|1000] "kOhm" Vector__XXX
+
+
 
  SG_ BMSMainRelay m257 : 104|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ BMSIgnition m257 : 434|1@0+ (1,0) [0|0] "" Vector__XXX
@@ -360,6 +364,10 @@ SG_MUL_VAL_ 2028 CCC_CumulativeChargeCurrent response 257-257;
 SG_MUL_VAL_ 2028 CDC_CumulativeDischargeCurrent response 257-257;
 SG_MUL_VAL_ 2028 CEC_CumulativeEnergyCharged response 257-257;
 SG_MUL_VAL_ 2028 CED_CumulativeEnergyDischarged response 257-257;
+SG_MUL_VAL_ 2028 DriveMotorSpeed1 response 257-257;
+SG_MUL_VAL_ 2028 DriveMotorSpeed2 response 257-257;
+SG_MUL_VAL_ 2028 InverterCapacitorVoltage response 257-257;
+SG_MUL_VAL_ 2028 IsolationResistance response 257-257;
 SG_MUL_VAL_ 2028 BMSMainRelay response 257-257;
 SG_MUL_VAL_ 2028 BMSIgnition response 257-257;
 SG_MUL_VAL_ 2028 BatteryDCVoltage response 257-257;
