@@ -29,3 +29,11 @@ Getting GPS location in docker (yes the trailing / is needed) host networking as
 ```
 curl -vvv -X POST -H "Content-Type: application/json" -d '["ec2x.gnss_location"]' http://localhost:9000/dongle/94820371-fbcc-2338-ca38-2ca83b77c293/execute/
 ```
+
+Battery signals needing more research: (response and service just here to remember those)
+```
+BO_ 2028 Battery: 62 Vector__XXX
+ SG_ response m98M : 23|16@0+ (1,0) [0|0] "unit" Vector__XXX
+ SG_ service M : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IsolationResistance m257 : 495|16@0+ (0,0) [0|1000] "kOhm" Vector__XXX needs more research
+```

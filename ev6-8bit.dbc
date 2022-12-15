@@ -83,10 +83,6 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ DriveMotorSpeed1 m257 : 455|16@0- (0,0) [-10100|10100] "rpm" Vector__XXX
  SG_ DriveMotorSpeed2 m257 : 471|16@0- (0,0) [-10100|10100] "rpm" Vector__XXX
  SG_ InverterCapacitorVoltage m257 : 439|16@0+ (0,0) [0|840] "V" Vector__XXX
- SG_ IsolationResistance m257 : 487|16@0+ (0,0) [0|1000] "kOhm" Vector__XXX
-
-
-
  SG_ BMSMainRelay m257 : 96|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ BMSIgnition m257 : 426|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ BatteryDCVoltage m257 : 127|16@0+ (0.1,0) [0|0] "V" Vector__XXX
@@ -274,8 +270,6 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ CellVoltage179 m268 : 207|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
  SG_ CellVoltage180 m268 : 215|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
 
-
-
 BO_ 1979 Temperature: 54 Vector__XXX
  SG_ IndoorTemperature m256 : 71|8@0+ (0.5,-40) [-50|50] "degC" Vector__XXX
  SG_ response m98M : 15|16@0+ (1,0) [0|0] "unit" Vector__XXX
@@ -319,7 +313,6 @@ VAL_ 8 Fence3 0 "Unknown" 1 "Inside" 2 "Outside" ;
 VAL_ 8 Fence4 0 "Unknown" 1 "Inside" 2 "Outside" ;
 VAL_ 7 SpeedValid 0 "Invalid" 1 "Valid" ;
 VAL_ 9 ImuValid 0 "Invalid" 1 "Valid" ;
-
 SG_MUL_VAL_ 2028 StateOfChargeBMS response 257-257;
 SG_MUL_VAL_ 2028 response service 98-98;
 SG_MUL_VAL_ 2028 MinCellVoltage response 257-257;
@@ -554,7 +547,6 @@ SG_MUL_VAL_ 2028 CellVoltage177 response 268-268;
 SG_MUL_VAL_ 2028 CellVoltage178 response 268-268;
 SG_MUL_VAL_ 2028 CellVoltage179 response 268-268;
 SG_MUL_VAL_ 2028 CellVoltage180 response 268-268;
-
 SG_MUL_VAL_ 2028 StateOfHealth response 261-261;
 SG_MUL_VAL_ 1979 IndoorTemperature response 256-256;
 SG_MUL_VAL_ 1979 response service 98-98;

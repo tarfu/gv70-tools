@@ -102,8 +102,7 @@ class ThreadedApp:
         self.bus.shutdown()
 
 
-if __name__ == '__main__':
-
+def main():
     db = cantools.database.load_file('ev6.dbc')
     def can_bus(dev): return can.interface.Bus(dev, bustype='socketcan')
 
@@ -139,3 +138,9 @@ if __name__ == '__main__':
 
     print("Exiting")
     app_7E4.shutdown()
+    app_7A0.shutdown()
+    app_7B3.shutdown()
+    return 0
+
+if __name__ == '__main__':
+    exit(main())
