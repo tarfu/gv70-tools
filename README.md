@@ -38,6 +38,10 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ IsolationResistance m257 : 495|16@0+ (0,0) [0|1000] "kOhm" Vector__XXX needs more research
 ```
 
+docker build and push:
+```
+docker buildx build -t tarfu/egv70:latest --platform=linux/arm/v7 --build-arg BUILDARCH=arm32v7 --push .
+```
 
 Extra Setup for autopi:
 /etc/modules-load.d/can-extra.conf
