@@ -3,3 +3,4 @@ can-isotp
 cantools
 influx_line_protocol
 paho-mqtt
+requests
