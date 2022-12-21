@@ -3,10 +3,10 @@
 
 Shifting bits in DBC:
 ```
-cat ev6.dbc | python -c 'import re,sys; print(re.sub(": (\d+)\|", lambda i: ": "+str(int(i.group(1))-8)+"|" if i.group(1) else "",sys.stdin.read()))' > ev6-8bit.dbc
+cat eGV70.dbc | python -c 'import re,sys; print(re.sub(": (\d+)\|", lambda i: ": "+str(int(i.group(1))-8)+"|" if i.group(1) else "",sys.stdin.read()))' > eGV70-8bit.dbc
 ```
 
-Requests:
+Requests (First Byte is isotp header for single frame (0 for single frame 3 for datalength)):
 ```
 BMS: b'\x03\x22\x01\x01\xAA\xAA\xAA\xAA'
 SOH: b'\x03\x22\x01\x05\xAA\xAA\xAA\xAA'
@@ -36,4 +36,35 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ response m98M : 23|16@0+ (1,0) [0|0] "unit" Vector__XXX
  SG_ service M : 15|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ IsolationResistance m257 : 495|16@0+ (0,0) [0|1000] "kOhm" Vector__XXX needs more research
+```
+
+
+Extra Setup for autopi:
+/etc/modules-load.d/can-extra.conf
+```
+can_isotp
+vcan
+```
+
+current mosquito custom conf:
+```
+connection eGV70
+address 8a6216a01c07466b8273354ed625784f.s2.eu.hivemq.cloud:8883
+topic eGV70 out 1 "" ""
+bridge_attempt_unsubscribe false
+keepalive_interval 15
+notifications false
+restart_timeout 10
+cleansession false
+max_queued_messages 10000
+autosave_interval 300
+queue_qos0_messages true
+try_private false
+bridge_protocol_version mqttv311
+max_inflight_messages 10
+remote_username xxxx
+remote_password xxxx
+remote_clientid autopi-sync
+bridge_capath /etc/ssl/certs/
+bridge_insecure true
 ```
