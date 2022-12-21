@@ -166,7 +166,7 @@ def main():
         message_gnss = {"topic": mqtt_topic, "payload": metric_from_dict("gnss", gnss, now)}
         
         if gnss["error"]:
-            eprint(gnss["error"])
+            eprint("GNNS Error:" + gnss["error"])
             message_gnss["payload"] = {}
             
         messages = []
@@ -184,7 +184,8 @@ def main():
             messages.append(message_gnss)
         
         print(messages)
-        publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
+        if len(messages) > 0:
+            publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
         
         time.sleep(query_intervall)
 
