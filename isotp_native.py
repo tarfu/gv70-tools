@@ -71,7 +71,7 @@ def process_Cell_Voltage(app_7E4, db) -> dict:
 
 
 def process_Temperatures(app_7B3, db) -> dict:
-    return process_command(app_7B3["sender"], app_7B3["receiver"], b'\x22\x01\x00\xAA', 54, db)
+    return process_command(app_7B3["sender"], app_7B3["receiver"], b'\x22\x01\x00', 54, db)
 
 
 def process_Tires(app_7A0, db) -> dict:
@@ -121,7 +121,7 @@ def main():
     mqtt_username = os.getenv("MQTT_USER")
     mqtt_password = os.getenv("MQTT_PASSWORD")
     mqtt_topic = os.getenv("MQTT_TOPIC", "eGV70")
-    mqtt_tls = os.getenv("MQTT_TLS", "True").lower() in ['true', '1', 'yes', 'y', 't']
+    mqtt_tls = os.getenv("MQTT_TLS", "False").lower() in ['true', '1', 'yes', 'y', 't']
     mqtt_tls_insecure = os.getenv("MQTT_TLS_INSECURE", "False").lower() in ['true', '1', 'yes', 'y', 't']
     autopi_deviceID = os.getenv("AUTOPI_DEVICEID")
     
@@ -183,7 +183,7 @@ def main():
         if len(message_gnss["payload"]) != 0:
             messages.append(message_gnss)
         
-        print([message_battery, message_cell_voltages, message_health, message_temps, message_tires])
+        print(messages)
         publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
         
         time.sleep(query_intervall)
