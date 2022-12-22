@@ -167,23 +167,23 @@ def main():
         
         if gnss["error"]:
             eprint("GNNS Error:" + gnss["error"])
-            message_gnss["payload"] = {}
+            gnss = {}
             
         messages = []
-        if len(message_battery["payload"]) != 0:
+        if len(battery) != 0:
             messages.append(message_battery)
-        if len(message_cell_voltages["payload"]) != 0:
+        if len(cell_voltages) != 0:
             messages.append(message_cell_voltages)
-        if len(message_health["payload"]) != 0:
+        if len(health) != 0:
             messages.append(message_health)
-        if len(message_temps["payload"]) != 0:
+        if len(temps) != 0:
             messages.append(message_temps)
-        if len(message_tires["payload"]) != 0:
+        if len(tires) != 0:
             messages.append(message_tires)
-        if len(message_gnss["payload"]) != 0:
+        if len(gnss) != 0:
             messages.append(message_gnss)
         
-        print(messages)
+        print("messages("+len(messages)+": "+messages)
         if len(messages) > 0:
             publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
         
