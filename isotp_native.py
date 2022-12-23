@@ -183,7 +183,7 @@ def main():
         if len(gnss) != 0:
             messages.append(message_gnss)
         
-        print("messages("+str(len(messages))+": "+messages)
+        print("messages("+str(len(messages))+": "+str(messages))
         if len(messages) > 0:
             publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
         
