@@ -115,8 +115,7 @@ def send_abrp(epoch, message_dict, api_token, car_token, timeout):
     headers = {
         'Authorization': 'APIKEY '+api_token,
         # Already added when you pass json=
-        # 'Content-Type': 'application/json',
-        
+        'Content-Type': 'application/json', 
     }
 
     dc_volate = message_dict['battery'].get('BatteryDCVoltage') if message_dict['battery'].get('BatteryDCVoltage') else 0
