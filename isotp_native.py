@@ -119,33 +119,38 @@ def send_abrp(epoch, message_dict, api_token, car_token, timeout):
         
     }
 
+    dc_volate = message_dict['battery'].get('BatteryDCVoltage') if message_dict['battery'].get('BatteryDCVoltage') else 0
+    bat_current = message_dict['battery'].get('BatteryCurrent') if message_dict['battery'].get('BatteryCurrent') else 0
+
     json_data = {
         'token': car_token,
         'tlm': {
             # time
             'utc': epoch,
             # gps
-            'lat': message_dict['gnss']['lat'],
-            'lon': message_dict['gnss']['lon'],
-            'heading': message_dict['gnss']['cog'],
-            'elevation': message_dict['gnss']['alt'],
+            'lat': message_dict['gnss'].get('lat'),
+            'lon': message_dict['gnss'].get('lon'),
+            'heading': message_dict['gnss'].get('cog'),
+            'elevation': message_dict['gnss'].get('alt'),
             # battery
-            'soc': message_dict['battery']['StateOfChargeDisplay'],
-            'power': message_dict['battery']['BatteryDCVoltage'] * message_dict['battery']['BatteryCurrent'],
-            'is_charging': message_dict['battery']['Charging'],
-            'is_dcfc': message_dict['battery']['RapidChargePort'],
-            'kwh_charged': message_dict['battery']['CEC_CumulativeEnergyCharged'],
-            'voltage': message_dict['battery']['BatteryDCVoltage'],
-            'current': message_dict['battery']['BatteryCurrent'],
-            'batt_temp': message_dict['battery']['BatteryMinTemperature'],
+            'soc': message_dict['battery'].get('StateOfChargeDisplay'),
+            'power': dc_volate * bat_current if dc_volate * bat_current != 0 else None,
+            'is_charging': message_dict['battery'].get('Charging'),
+            'is_dcfc': message_dict['battery'].get('RapidChargePort'),
+            'kwh_charged': message_dict['battery'].get('CEC_CumulativeEnergyCharged'),
+            'voltage': message_dict['battery'].get('BatteryDCVoltage'),
+            'current': message_dict['battery'].get('BatteryCurrent'),
+            'batt_temp': message_dict['battery'].get('BatteryMinTemperature'),
             # health
-            'soh': message_dict['health']['StateOfHealth'],
+            'soh': message_dict['health'].get('StateOfHealth'),
             # car
-            'ext_temp': message_dict['temps']['OutdoorTemperature'],
-            # 'odometer': message_dict['health']['StateOfHealth'], # NOT YET SCRAPED
-            'speed': message_dict['temps']['VehicleSpeed'],
+            'ext_temp': message_dict['temps'].get('OutdoorTemperature'),
+            # 'odometer': message_dict['health'].get('StateOfHealth'), # NOT YET SCRAPED
+            'speed': message_dict['temps'].get('VehicleSpeed'),
         }
     }
+    
+    
 
     response = requests.post(
         api_url,
@@ -229,14 +234,14 @@ def main():
                 
         
         print("messages("+str(len(messages))+": "+str(messages))
-        if len(messages) > 0:
+        if len(messages) > 0 and not (len(messages['gnss']) != 0 and len(messages) == 1): # ignore gnss for sending decission
             publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
         
-        if abrp_apikey and abrp_cartoken and time.time()>skip_abrp_epoch:
-            status = send_abrp(epoch, message, abrp_apikey, abrp_cartoken)
-            if status["status"] != "ok" and status["errors"]:
-                eprint(status)
-                skip_abrp_epoch=time.time()+60
+            if abrp_apikey and abrp_cartoken and time.time()>skip_abrp_epoch:
+                status = send_abrp(epoch, message, abrp_apikey, abrp_cartoken)
+                if status["status"] != "ok" and status["errors"]:
+                    eprint(status)
+                    skip_abrp_epoch=time.time()+60
             
         if len(messages) == 0:
             next_run = next_run+60
