@@ -25,7 +25,7 @@ def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
 
-def process_command(sender: isotp.socket, reveiver: isotp.socket, command, response_length, parsed_database, read_timeout=5, read_pause=0.1):
+def process_command(sender: isotp.socket, reveiver: isotp.socket, command, response_length, parsed_database, read_timeout=1, read_pause=0.1):
     try:
         reveiver.send(command)
     except Exception as e:
@@ -109,7 +109,48 @@ def metric_from_dict(name ,messurements, time_ns):
         metric.add_value(key, value)
     return str(metric)  
     
+def send_abrp(epoch, message_dict, api_token, car_token):
+    api_url = "https://api.iternio.com/1/tlm/send"
     
+    headers = {
+        'Authorization': 'APIKEY '+api_token,
+        # Already added when you pass json=
+        # 'Content-Type': 'application/json',
+        
+    }
+
+    json_data = {
+        'token': car_token,
+        'tlm': {
+            # time
+            'utc': epoch,
+            # gps
+            'lat': message_dict['gnss']['lat'],
+            'lon': message_dict['gnss']['lon'],
+            'heading': message_dict['gnss']['cog'],
+            'elevation': message_dict['gnss']['alt'],
+            # soc
+            
+            
+            
+
+
+            
+            
+        }
+    }
+
+    response = requests.post(
+        api_url,
+        headers=headers,
+        json=json_data,
+    )
+    try:
+        return response.json()
+    except Exception as e:
+        return {"error": repr(e)}
+    
+        
 
 def main():
     
@@ -124,6 +165,8 @@ def main():
     mqtt_tls = os.getenv("MQTT_TLS", "False").lower() in ['true', '1', 'yes', 'y', 't']
     mqtt_tls_insecure = os.getenv("MQTT_TLS_INSECURE", "False").lower() in ['true', '1', 'yes', 'y', 't']
     autopi_deviceID = os.getenv("AUTOPI_DEVICEID")
+    abrp_apikey = os.getenv("ABRP_APIKEY")
+    abrp_cartoken = os.getenv("ABRP_CARTOKEN")
     
     mqtt_auth = None if mqtt_username == None or mqtt_password == None else {"username": mqtt_username, "password": mqtt_password}
     tls = None if not mqtt_tls else {"insecure": mqtt_tls_insecure}
@@ -147,47 +190,39 @@ def main():
 
     while True:
         results = []
-        now = time.time_ns()
-        battery = process_BMS(app_7E4, db)
-        cell_voltages = process_Cell_Voltage(app_7E4, db)
-        health = process_SOH(app_7E4, db)
-        temps = process_Temperatures(app_7B3, db)
-        tires = process_Tires(app_7A0, db)
-        gnss = {}
+        now_ns = time.time_ns()
+        now_s = time.time()
+        epoch = int(time.time())
+        message = {}
+        message["battery"] = process_BMS(app_7E4, db)
+        message["cell_voltages"] = process_Cell_Voltage(app_7E4, db)
+        message["health"] = process_SOH(app_7E4, db)
+        message["temps"] = process_Temperatures(app_7B3, db)
+        message["tires"] = process_Tires(app_7A0, db)
+        message["gnss"] = {}
         if autopi_deviceID:
-            gnss = get_gnss(autopi_deviceID)
-        
-        
-        message_battery = {"topic": mqtt_topic, "payload": metric_from_dict("battery", battery, now)}
-        message_cell_voltages = {"topic": mqtt_topic, "payload": metric_from_dict("cell_voltages", cell_voltages, now)}
-        message_health = {"topic": mqtt_topic, "payload": metric_from_dict("health", health, now)}
-        message_temps = {"topic": mqtt_topic, "payload": metric_from_dict("temps", temps, now)}
-        message_tires = {"topic": mqtt_topic, "payload": metric_from_dict("tires", tires, now)}
-        message_gnss = {"topic": mqtt_topic, "payload": metric_from_dict("gnss", gnss, now)}
-        
-        if gnss["error"]:
-            eprint("GNNS Error:" + gnss["error"])
-            gnss = {}
+            message["gnss"] = get_gnss(autopi_deviceID)
             
+        if message["gnss"]["error"]:
+            eprint("GNNS Error:" + message["gnss"]["error"])
+            message["gnss"] = {}
+        
+        mqtt_message = {}
         messages = []
-        if len(battery) != 0:
-            messages.append(message_battery)
-        if len(cell_voltages) != 0:
-            messages.append(message_cell_voltages)
-        if len(health) != 0:
-            messages.append(message_health)
-        if len(temps) != 0:
-            messages.append(message_temps)
-        if len(tires) != 0:
-            messages.append(message_tires)
-        if len(gnss) != 0:
-            messages.append(message_gnss)
+
+        for key, value in message.items():
+            msg = {"topic": mqtt_topic, "payload": metric_from_dict("key", value, now_ns)}
+            if len(message[key]) != 0:
+                messages.append(msg)
+                
         
         print("messages("+str(len(messages))+": "+str(messages))
         if len(messages) > 0:
             publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
         
-        time.sleep(query_intervall)
+        if abrp_apikey and abrp_cartoken:
+            send_abrp(epoch, message, abrp_apikey, abrp_cartoken)
+        time.sleep((now_s+query_intervall) - time.time())
 
     print("Exiting")
 
