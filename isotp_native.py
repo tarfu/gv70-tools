@@ -242,9 +242,11 @@ def main():
                 if status["status"] != "ok" and status["errors"]:
                     eprint(status)
                     skip_abrp_epoch=time.time()+60
+                    print('error sending abrp pausing it for 1 minute')
             
         if len(messages) == 0:
             next_run = next_run+60
+            print('non messages found sleeping 1 minute extra')
         time.sleep(next_run - time.time())
 
     print("Exiting")
