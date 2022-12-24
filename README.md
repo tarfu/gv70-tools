@@ -40,7 +40,7 @@ BO_ 2028 Battery: 62 Vector__XXX
 
 docker build and push:
 ```
-docker buildx build -t tarfu/egv70:latest --platform=linux/arm/v7 --build-arg BUILDARCH=arm32v7 --push .
+docker buildx build -t tarfu/egv70:latest -t tarfu/egv70:$(git rev-parse --short HEAD) --platform=linux/arm/v7 --build-arg BUILDARCH=arm32v7 --push .
 ```
 
 Extra Setup for autopi:
