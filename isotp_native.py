@@ -132,11 +132,6 @@ def send_abrp(epoch, message_dict, api_token, car_token):
             # soc
             
             
-            
-
-
-            
-            
         }
     }
 
@@ -193,6 +188,7 @@ def main():
         now_ns = time.time_ns()
         now_s = time.time()
         epoch = int(time.time())
+        next_run = (now_s+query_intervall)
         message = {}
         message["battery"] = process_BMS(app_7E4, db)
         message["cell_voltages"] = process_Cell_Voltage(app_7E4, db)
@@ -222,7 +218,10 @@ def main():
         
         if abrp_apikey and abrp_cartoken:
             send_abrp(epoch, message, abrp_apikey, abrp_cartoken)
-        time.sleep((now_s+query_intervall) - time.time())
+            
+        if len(messages) == 0:
+            next_run = next_run+60
+        time.sleep(next_run - time.time())
 
     print("Exiting")
 
