@@ -109,7 +109,7 @@ def metric_from_dict(name ,messurements, time_ns):
         metric.add_value(key, value)
     return str(metric)  
     
-def send_abrp(epoch, message_dict, api_token, car_token):
+def send_abrp(epoch, message_dict, api_token, car_token, timeout):
     api_url = "https://api.iternio.com/1/tlm/send"
     
     headers = {
@@ -129,9 +129,21 @@ def send_abrp(epoch, message_dict, api_token, car_token):
             'lon': message_dict['gnss']['lon'],
             'heading': message_dict['gnss']['cog'],
             'elevation': message_dict['gnss']['alt'],
-            # soc
-            
-            
+            # battery
+            'soc': message_dict['battery']['StateOfChargeDisplay'],
+            'power': message_dict['battery']['BatteryDCVoltage'] * message_dict['battery']['BatteryCurrent'],
+            'is_charging': message_dict['battery']['Charging'],
+            'is_dcfc': message_dict['battery']['RapidChargePort'],
+            'kwh_charged': message_dict['battery']['CEC_CumulativeEnergyCharged'],
+            'voltage': message_dict['battery']['BatteryDCVoltage'],
+            'current': message_dict['battery']['BatteryCurrent'],
+            'batt_temp': message_dict['battery']['BatteryMinTemperature'],
+            # health
+            'soh': message_dict['health']['StateOfHealth'],
+            # car
+            'ext_temp': message_dict['temps']['OutdoorTemperature'],
+            # 'odometer': message_dict['health']['StateOfHealth'], # NOT YET SCRAPED
+            'speed': message_dict['temps']['VehicleSpeed'],
         }
     }
 
@@ -143,7 +155,10 @@ def send_abrp(epoch, message_dict, api_token, car_token):
     try:
         return response.json()
     except Exception as e:
-        return {"error": repr(e)}
+        return {
+            "status": "exception",
+            "errors": repr(e)
+            }
     
         
 
@@ -151,7 +166,7 @@ def main():
     
     dbc_file_path = os.getenv("DBC_FILE", "eGV70-8bit.dbc")
     can_interface = os.getenv("CAN_INTERFACE", "vcan0")
-    query_intervall = os.getenv("QUERY_INTERVAL", 30)
+    query_intervall = os.getenv("QUERY_INTERVAL", 10)
     mqtt_host = os.getenv("MQTT_HOST", "localhost")
     mqtt_port = os.getenv("MQTT_PORT", 1883)
     mqtt_username = os.getenv("MQTT_USER")
@@ -189,6 +204,7 @@ def main():
         now_s = time.time()
         epoch = int(time.time())
         next_run = (now_s+query_intervall)
+        skip_abrp_epoch = 0
         message = {}
         message["battery"] = process_BMS(app_7E4, db)
         message["cell_voltages"] = process_Cell_Voltage(app_7E4, db)
@@ -216,8 +232,11 @@ def main():
         if len(messages) > 0:
             publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
         
-        if abrp_apikey and abrp_cartoken:
-            send_abrp(epoch, message, abrp_apikey, abrp_cartoken)
+        if abrp_apikey and abrp_cartoken and time.time()>skip_abrp_epoch:
+            status = send_abrp(epoch, message, abrp_apikey, abrp_cartoken)
+            if status["status"] != "ok" and status["errors"]:
+                eprint(status)
+                skip_abrp_epoch=time.time()+60
             
         if len(messages) == 0:
             next_run = next_run+60
