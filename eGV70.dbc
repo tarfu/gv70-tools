@@ -289,7 +289,10 @@ BO_ 1960 Tire: 64 Vector__XXX
  SG_ TireTemperatureBackLeft m49163 : 159|8@0+ (1,-50) [-40|65] "degC" Vector__XXX
  SG_ TireTemperatureBackRight m49163 : 199|8@0+ (1,-50) [-40|65] "degC" Vector__XXX
 
-
+BO_ 1998 Car: 64 Vector__XXX
+ SG_ response m98M : 23|16@0+ (1,0) [0|0] "unit" Vector__XXX
+ SG_ service M : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Odometer m2 : 87|24@0+ (0,0) [0|16777215] "km" Vector__XXX
 
 BA_DEF_ BO_  "VFrameFormat" ENUM  "StandardCAN","ExtendedCAN","StandardCAN_FD","ExtendedCAN_FD","J1939PG";
 BA_DEF_  "ProtocolType" STRING ;
@@ -314,6 +317,7 @@ VAL_ 8 Fence4 0 "Unknown" 1 "Inside" 2 "Outside" ;
 VAL_ 7 SpeedValid 0 "Invalid" 1 "Valid" ;
 VAL_ 9 ImuValid 0 "Invalid" 1 "Valid" ;
 SG_MUL_VAL_ 2028 StateOfChargeBMS response 257-257;
+SG_MUL_VAL_ 2028 Odometer response 2-2;
 SG_MUL_VAL_ 2028 response service 98-98;
 SG_MUL_VAL_ 2028 MinCellVoltage response 257-257;
 SG_MUL_VAL_ 2028 MaxCellVoltage response 257-257;

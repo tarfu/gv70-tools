@@ -77,6 +77,9 @@ def process_Temperatures(app_7B3, db) -> dict:
 def process_Tires(app_7A0, db) -> dict:
     return process_command(app_7A0["sender"], app_7A0["receiver"], b'\x22\xC0\x0B', 64, db)
 
+def process_Odometer(app_7C6, db) -> dict:
+    return process_command(app_7C6["sender"], app_7C6["receiver"], b'\x22\xB0\x02', 64, db)
+
 
 def get_gnss(deviceID):
     headers = {
@@ -144,7 +147,7 @@ def send_abrp(epoch, message_dict, api_token, car_token, timeout):
             'soh': message_dict['health'].get('StateOfHealth'),
             # car
             'ext_temp': message_dict['temps'].get('OutdoorTemperature'),
-            # 'odometer': message_dict['health'].get('StateOfHealth'), # NOT YET SCRAPED
+            'odometer': message_dict['car'].get('Odometer'),
             'speed': message_dict['temps'].get('VehicleSpeed'),
         }
     }
@@ -200,6 +203,10 @@ def main():
     app_7A0["receiver"].set_fc_opts(stmin=5, bs=0)
     app_7A0["sender"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7A0, txid=0x7A8))
     app_7A0["receiver"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7A8, txid=0x7A0))
+    app_7C6 = {"sender": isotp.socket(), "receiver": isotp.socket()} 
+    app_7C6["receiver"].set_fc_opts(stmin=5, bs=0)
+    app_7C6["sender"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7C6, txid=0x7CE))
+    app_7C6["receiver"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7CE, txid=0x7C6))
 
 
     while True:
@@ -215,6 +222,7 @@ def main():
         message["health"] = process_SOH(app_7E4, db)
         message["temps"] = process_Temperatures(app_7B3, db)
         message["tires"] = process_Tires(app_7A0, db)
+        message["car"] = process_Odometer(app_7C6, db)
         message["gnss"] = {}
         if autopi_deviceID:
             message["gnss"] = get_gnss(autopi_deviceID)

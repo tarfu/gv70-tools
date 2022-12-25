@@ -6,18 +6,20 @@ Shifting bits in DBC:
 cat eGV70.dbc | python -c 'import re,sys; print(re.sub(": (\d+)\|", lambda i: ": "+str(int(i.group(1))-8)+"|" if i.group(1) else "",sys.stdin.read()))' > eGV70-8bit.dbc
 ```
 
-Requests (First Byte is isotp header for single frame (0 for single frame 3 for datalength)):
+Requests (First Byte is isotp header for single frame (0 for single frame 3 for datalength) `\xAA` is padding and can be left)
+the answer is normally send to `<address you send your request to>+8`
 ```
-BMS: b'\x03\x22\x01\x01\xAA\xAA\xAA\xAA'
-SOH: b'\x03\x22\x01\x05\xAA\xAA\xAA\xAA'
-CellVoltage1: b'\x03\x22\x01\x02\xAA\xAA\xAA\xAA'
-CellVoltage2: b'\x03\x22\x01\x03\xAA\xAA\xAA\xAA'
-CellVoltage3: b'\x03\x22\x01\x04\xAA\xAA\xAA\xAA'
-CellVoltage4: b'\x03\x22\x01\x0A\xAA\xAA\xAA\xAA'
-CellVoltage5: b'\x03\x22\x01\x0B\xAA\xAA\xAA\xAA'
-CellVoltage6: b'\x03\x22\x01\x0C\xAA\xAA\xAA\xAA'
-Temperatures: b'\x03\x22\x01\x00\xAA\xAA\xAA\xAA'
-Tires: b'\x03\x22\xC0\x0B\xAA\xAA\xAA\xAA'
+BMS (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x01\xAA\xAA\xAA\xAA'
+SOH (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x05\xAA\xAA\xAA\xAA'
+CellVoltage1 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x02\xAA\xAA\xAA\xAA'
+CellVoltage2 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x03\xAA\xAA\xAA\xAA'
+CellVoltage3 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x04\xAA\xAA\xAA\xAA'
+CellVoltage4 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x0A\xAA\xAA\xAA\xAA'
+CellVoltage5 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x0B\xAA\xAA\xAA\xAA'
+CellVoltage6 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x0C\xAA\xAA\xAA\xAA'
+Temperatures (rxid=0x7BB, txid=0x7B3): b'\x03\x22\x01\x00\xAA\xAA\xAA\xAA'
+Tires (rxid=0x7A8, txid=0x7A0): b'\x03\x22\xC0\x0B\xAA\xAA\xAA\xAA'
+Car (rxid=0x7CE, txid=7C6): b'\x03\x22\xB0\x02'
 ```
 
 Basis for ev6.dbc:
