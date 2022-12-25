@@ -240,7 +240,7 @@ def main():
                 messages.append(msg)
                 
         
-        print("messages("+str(len(messages))+": "+str(messages))
+        eprint("messages("+str(len(messages))+": "+str(messages))
         if len(messages) > 0 and not (len(messages['gnss']) != 0 and len(messages) == 1): # ignore gnss for sending decission
             publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
         
@@ -249,11 +249,11 @@ def main():
                 if status["status"] != "ok" and status["errors"]:
                     eprint(status)
                     skip_abrp_epoch=time.time()+60
-                    print('error sending abrp pausing it for 1 minute')
+                    eprint('error sending abrp pausing it for 1 minute')
             
         if len(messages) == 0:
             next_run = next_run+60
-            print('non messages found sleeping 1 minute extra')
+            eprint('non messages found sleeping 1 minute extra')
         time.sleep(next_run - time.time())
 
     print("Exiting")
