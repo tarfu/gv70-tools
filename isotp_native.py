@@ -25,7 +25,7 @@ def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
 
-def process_command(sender: isotp.socket, reveiver: isotp.socket, command, response_length, parsed_database, read_timeout=1, read_pause=0.1):
+def process_command(sender: isotp.socket, reveiver: isotp.socket, command, response_length, parsed_database, read_timeout=5, read_pause=0.1):
     try:
         reveiver.send(command)
     except Exception as e:
