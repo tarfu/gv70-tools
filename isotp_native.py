@@ -112,7 +112,7 @@ def metric_from_dict(name ,messurements, time_ns):
         metric.add_value(key, value)
     return str(metric)  
     
-def send_abrp(epoch, message_dict, api_token, car_token, timeout):
+def send_abrp(epoch, message_dict, api_token, car_token, timeout=5):
     api_url = "https://api.iternio.com/1/tlm/send"
     
     headers = {
@@ -254,7 +254,8 @@ def main():
         if len(messages) == 0:
             next_run = next_run+60
             eprint('non messages found sleeping 1 minute extra')
-        time.sleep(next_run - time.time())
+        sleeptime = next_run - time.time()
+        time.sleep( sleeptime if sleeptime > 0 else 0 )
 
     print("Exiting")
 
