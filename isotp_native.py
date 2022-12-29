@@ -241,7 +241,7 @@ def main():
                 
         
         eprint("messages("+str(len(messages))+": "+str(messages))
-        if len(messages) > 0 and not (len(messages['gnss']) != 0 and len(messages) == 1): # ignore gnss for sending decission
+        if len(messages) > 0 and not (len(message['gnss']) != 0 and len(messages) == 1): # ignore gnss for sending decission
             publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
         
             if abrp_apikey and abrp_cartoken and time.time()>skip_abrp_epoch:
