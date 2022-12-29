@@ -227,7 +227,7 @@ def main():
         if autopi_deviceID:
             message["gnss"] = get_gnss(autopi_deviceID)
             
-        if message["gnss"]["error"]:
+        if "error" in message["gnss"]:
             eprint("GNNS Error:" + message["gnss"]["error"])
             message["gnss"] = {}
         
@@ -246,7 +246,7 @@ def main():
         
             if abrp_apikey and abrp_cartoken and time.time()>skip_abrp_epoch:
                 status = send_abrp(epoch, message, abrp_apikey, abrp_cartoken)
-                if status["status"] != "ok" and status["errors"]:
+                if status.get("status") != "ok" and "errors" in status:
                     eprint(status)
                     skip_abrp_epoch=time.time()+60
                     eprint('error sending abrp pausing it for 1 minute')
