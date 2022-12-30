@@ -235,7 +235,7 @@ def main():
         messages = []
 
         for key, value in message.items():
-            msg = {"topic": mqtt_topic, "payload": metric_from_dict("key", value, now_ns)}
+            msg = {"topic": mqtt_topic, "payload": metric_from_dict(key, value, now_ns)}
             if len(message[key]) != 0:
                 messages.append(msg)
                 
