@@ -70,9 +70,9 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ RapidChargePort m257 : 102|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ OperatingTime m257 : 399|32@0+ (0.00027777777,0) [0|1000000] "hours" Vector__XXX
  SG_ StateOfHealth m261 : 231|16@0+ (0.1,0) [0|100] "%" Vector__XXX
- SG_ MaximumDeteriorationCellNo m261 : 247|8@0+ (0,0) [0|192] "" Vector__XXX
+ SG_ MaximumDeteriorationCellNo m261 : 247|8@0+ (1,0) [0|192] "" Vector__XXX
  SG_ MinimumDeterioration m261 : 255|16@0+ (0.1,0) [0|100] "%" Vector__XXX
- SG_ MinimumDeteriorationCellNo m261 : 271|8@0+ (0,0) [0|192] "" Vector__XXX
+ SG_ MinimumDeteriorationCellNo m261 : 271|8@0+ (1,0) [0|192] "" Vector__XXX
  SG_ MinCellVoltageCellNo m257 : 239|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ MaxCellVoltageCellNo m257 : 223|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ Charging m257 : 103|1@0+ (1,0) [0|0] "" Vector__XXX
@@ -80,9 +80,9 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ CDC_CumulativeDischargeCurrent m257 : 303|32@0+ (0.1,0) [0|1000000] "Ah" Vector__XXX
  SG_ CEC_CumulativeEnergyCharged m257 : 335|32@0+ (0.1,0) [0|1000000] "kWh" Vector__XXX
  SG_ CED_CumulativeEnergyDischarged m257 : 367|32@0+ (0.1,0) [0|1000000] "kWh" Vector__XXX
- SG_ DriveMotorSpeed1 m257 : 455|16@0- (0,0) [-10100|10100] "rpm" Vector__XXX
- SG_ DriveMotorSpeed2 m257 : 471|16@0- (0,0) [-10100|10100] "rpm" Vector__XXX
- SG_ InverterCapacitorVoltage m257 : 439|16@0+ (0,0) [0|840] "V" Vector__XXX
+ SG_ DriveMotorSpeed1 m257 : 455|16@0- (1,0) [-10100|10100] "rpm" Vector__XXX
+ SG_ DriveMotorSpeed2 m257 : 471|16@0- (1,0) [-10100|10100] "rpm" Vector__XXX
+ SG_ InverterCapacitorVoltage m257 : 439|16@0+ (1,0) [0|840] "V" Vector__XXX
  SG_ BMSMainRelay m257 : 96|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ BMSIgnition m257 : 426|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ BatteryDCVoltage m257 : 127|16@0+ (0.1,0) [0|0] "V" Vector__XXX
@@ -292,7 +292,7 @@ BO_ 1960 Tire: 64 Vector__XXX
 BO_ 1998 Car: 64 Vector__XXX
  SG_ response m98M : 15|16@0+ (1,0) [0|0] "unit" Vector__XXX
  SG_ service M : 7|8@0+ (1,0) [0|0] "" Vector__XXX
- SG_ Odometer m2 : 79|24@0+ (0,0) [0|16777215] "km" Vector__XXX
+ SG_ Odometer m2 : 79|24@0+ (1,0) [0|16777215] "km" Vector__XXX
 
 BA_DEF_ BO_  "VFrameFormat" ENUM  "StandardCAN","ExtendedCAN","StandardCAN_FD","ExtendedCAN_FD","J1939PG";
 BA_DEF_  "ProtocolType" STRING ;
