@@ -192,28 +192,28 @@ def main():
     def can_bus(dev): return can.interface.Bus(dev, bustype='socketcan')
 
     app_7E4 = {"sender": isotp.socket(), "receiver": isotp.socket()} 
-    app_7E4["receiver"].set_fc_opts(stmin=5, bs=0)
+    app_7E4["receiver"].set_fc_opts(stmin=0, bs=0)
     app_7E4["receiver"].set_opts(txpad=0x00)
     app_7E4["sender"].set_opts(txpad=0xAA)
-    app_7E4["sender"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7EC, txid=0x7E4))
+    app_7E4["sender"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x00, txid=0x7E4))
     app_7E4["receiver"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7EC, txid=0x7E4))
     app_7B3 = {"sender": isotp.socket(), "receiver": isotp.socket()} 
-    app_7B3["receiver"].set_fc_opts(stmin=5, bs=0)
+    app_7B3["receiver"].set_fc_opts(stmin=0, bs=0)
     app_7B3["receiver"].set_opts(txpad=0x00)
     app_7B3["sender"].set_opts(txpad=0xAA)
-    app_7B3["sender"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7BB, txid=0x7B3))
+    app_7B3["sender"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x00, txid=0x7B3))
     app_7B3["receiver"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7BB, txid=0x7B3))
     app_7A0 = {"sender": isotp.socket(), "receiver": isotp.socket()} 
-    app_7A0["receiver"].set_fc_opts(stmin=5, bs=0)
+    app_7A0["receiver"].set_fc_opts(stmin=0, bs=0)
     app_7A0["receiver"].set_opts(txpad=0x00)
     app_7A0["sender"].set_opts(txpad=0xAA)
-    app_7A0["sender"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7A8, txid=0x7A0))
+    app_7A0["sender"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x00, txid=0x7A0))
     app_7A0["receiver"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7A8, txid=0x7A0))
     app_7C6 = {"sender": isotp.socket(), "receiver": isotp.socket()} 
-    app_7C6["receiver"].set_fc_opts(stmin=5, bs=0)
+    app_7C6["receiver"].set_fc_opts(stmin=0, bs=0)
     app_7C6["receiver"].set_opts(txpad=0x00)
     app_7C6["sender"].set_opts(txpad=0xAA)
-    app_7C6["sender"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7CE, txid=0x7C6))
+    app_7C6["sender"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x00, txid=0x7C6))
     app_7C6["receiver"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7CE, txid=0x7C6))
 
 
