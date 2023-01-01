@@ -6,19 +6,25 @@ Shifting bits in DBC:
 cat eGV70.dbc | python -c 'import re,sys; print(re.sub(": (\d+)\|", lambda i: ": "+str(int(i.group(1))-8)+"|" if i.group(1) else "",sys.stdin.read()))' > eGV70-8bit.dbc
 ```
 
+sending receiving with isotp-utils (padding important):
+```
+echo "22 01 01" | isotpsend -s 7e4 -d 7EC -p AA can0
+isotprecv -d 7ec -s 7e4 -b 0 can0 -l -p 00
+```
+
 Requests (First Byte is isotp header for single frame (0 for single frame 3 for datalength) `\xAA` is padding and can be left)
 the answer is normally send to `<address you send your request to>+8`
 ```
-BMS (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x01\xAA\xAA\xAA\xAA'
-SOH (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x05\xAA\xAA\xAA\xAA'
-CellVoltage1 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x02\xAA\xAA\xAA\xAA'
-CellVoltage2 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x03\xAA\xAA\xAA\xAA'
-CellVoltage3 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x04\xAA\xAA\xAA\xAA'
-CellVoltage4 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x0A\xAA\xAA\xAA\xAA'
-CellVoltage5 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x0B\xAA\xAA\xAA\xAA'
-CellVoltage6 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x0C\xAA\xAA\xAA\xAA'
-Temperatures (rxid=0x7BB, txid=0x7B3): b'\x03\x22\x01\x00\xAA\xAA\xAA\xAA'
-Tires (rxid=0x7A8, txid=0x7A0): b'\x03\x22\xC0\x0B\xAA\xAA\xAA\xAA'
+BMS (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x01'
+SOH (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x05'
+CellVoltage1 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x02'
+CellVoltage2 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x03'
+CellVoltage3 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x04'
+CellVoltage4 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x0A'
+CellVoltage5 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x0B'
+CellVoltage6 (rxid=0x7EC, txid=0x7E4): b'\x03\x22\x01\x0C'
+Temperatures (rxid=0x7BB, txid=0x7B3): b'\x03\x22\x01\x00'
+Tires (rxid=0x7A8, txid=0x7A0): b'\x03\x22\xC0\x0B'
 Car (rxid=0x7CE, txid=7C6): b'\x03\x22\xB0\x02'
 ```
 
