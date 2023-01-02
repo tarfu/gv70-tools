@@ -80,16 +80,26 @@ def process_Tires(app_7A0, db) -> dict:
 def process_Odometer(app_7C6, db) -> dict:
     return process_command(app_7C6["sender"], app_7C6["receiver"], b'\x22\xB0\x02', 64, db)
 
+def check_autopi_socketcan_and_set_up(deviceID, ifname: str) -> bool:
+    ifstatus = send_autopi_command(deviceID, [f"socketcan.show", ifname])
+    if "error" in ifstatus:
+        eprint(ifstatus)
+        return False
+    if ifstatus.get("operstate", "DOWN").lower == "down":
+        upstate = send_autopi_command(deviceID, [f"socketcan.up", ifname])
+        if "error" in upstate:
+            eprint(upstate)
+            return False
+        return True
+    return True
 
-def get_gnss(deviceID):
+def send_autopi_command(deviceID: str, command: list):
     headers = {
         # Already added when you pass json=
-        # 'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
     }
 
-    json_data = [
-        'ec2x.gnss_location',
-    ]
+    json_data = command
 
     response = requests.post(
         'http://localhost:9000/dongle/'+deviceID+'/execute/',
@@ -100,6 +110,9 @@ def get_gnss(deviceID):
         return response.json()
     except Exception as e:
         return {"error": repr(e)}
+
+def get_gnss(deviceID):
+    return send_autopi_command(deviceID, ['ec2x.gnss_location'])
 
 
 def metric_from_dict(name ,messurements, time_ns):
@@ -182,8 +195,15 @@ def main():
     mqtt_tls = os.getenv("MQTT_TLS", "False").lower() in ['true', '1', 'yes', 'y', 't']
     mqtt_tls_insecure = os.getenv("MQTT_TLS_INSECURE", "False").lower() in ['true', '1', 'yes', 'y', 't']
     autopi_deviceID = os.getenv("AUTOPI_DEVICEID")
+    autopi_set_socketcan_up = os.getenv("AUTOPI_SET_SOCKETCAN_UP", True).lower() in ['true', '1', 'yes', 'y', 't']
+    autopi_die_if_can_not_set_up = os.getenv("AUTOPI_DIE_IF_CAN_NOT_SET_UP", True).lower() in ['true', '1', 'yes', 'y', 't']
     abrp_apikey = os.getenv("ABRP_APIKEY")
     abrp_cartoken = os.getenv("ABRP_CARTOKEN")
+    
+    if autopi_set_socketcan_up:
+        could_set_up = check_autopi_socketcan_and_set_up(autopi_deviceID, can_interface)
+        if  not could_set_up and autopi_die_if_can_not_set_up:
+            exit(5)
     
     mqtt_auth = None if mqtt_username == None or mqtt_password == None else {"username": mqtt_username, "password": mqtt_password}
     tls = None if not mqtt_tls else {"insecure": mqtt_tls_insecure}
