@@ -195,8 +195,8 @@ def main():
     mqtt_tls = os.getenv("MQTT_TLS", "False").lower() in ['true', '1', 'yes', 'y', 't']
     mqtt_tls_insecure = os.getenv("MQTT_TLS_INSECURE", "False").lower() in ['true', '1', 'yes', 'y', 't']
     autopi_deviceID = os.getenv("AUTOPI_DEVICEID")
-    autopi_set_socketcan_up = os.getenv("AUTOPI_SET_SOCKETCAN_UP", True).lower() in ['true', '1', 'yes', 'y', 't']
-    autopi_die_if_can_not_set_up = os.getenv("AUTOPI_DIE_IF_CAN_NOT_SET_UP", True).lower() in ['true', '1', 'yes', 'y', 't']
+    autopi_set_socketcan_up = os.getenv("AUTOPI_SET_SOCKETCAN_UP", "True").lower() in ['true', '1', 'yes', 'y', 't']
+    autopi_die_if_can_not_set_up = os.getenv("AUTOPI_DIE_IF_CAN_NOT_SET_UP", "True").lower() in ['true', '1', 'yes', 'y', 't']
     abrp_apikey = os.getenv("ABRP_APIKEY")
     abrp_cartoken = os.getenv("ABRP_CARTOKEN")
     
