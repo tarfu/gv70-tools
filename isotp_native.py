@@ -86,7 +86,7 @@ def check_autopi_socketcan_and_set_up(deviceID, ifname: str) -> bool:
         eprint(ifstatus)
         return False
     if ifstatus.get("operstate", "DOWN").lower == "down":
-        upstate = send_autopi_command(deviceID, [f"socketcan.up", ifname])
+        upstate = send_autopi_command(deviceID, ['socketcan.up', ifname])
         if "error" in upstate:
             eprint(upstate)
             return False
@@ -101,12 +101,13 @@ def send_autopi_command(deviceID: str, command: list):
 
     json_data = command
 
-    response = requests.post(
-        'http://localhost:9000/dongle/'+deviceID+'/execute/',
-        headers=headers,
-        json=json_data,
-    )
     try:
+        response = requests.post(
+            'http://localhost:9000/dongle/'+deviceID+'/execute/',
+            headers=headers,
+            json=json_data,
+        )
+
         return response.json()
     except Exception as e:
         return {"error": repr(e)}
@@ -166,13 +167,13 @@ def send_abrp(epoch, message_dict, api_token, car_token, timeout=5):
     }
     
     
-
-    response = requests.post(
-        api_url,
-        headers=headers,
-        json=json_data,
-    )
     try:
+        response = requests.post(
+            api_url,
+            headers=headers,
+            json=json_data,
+        )
+    
         return response.json()
     except Exception as e:
         return {
