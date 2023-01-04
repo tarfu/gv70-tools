@@ -25,7 +25,7 @@ def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
 
-def process_command(sender: isotp.socket, reveiver: isotp.socket, command, response_length, parsed_database, read_timeout=5, read_pause=0.1):
+def process_command(sender: isotp.socket, receiver: isotp.socket, command, response_length, parsed_database, read_timeout=1, read_pause=0.1, resend_on_wrong_response_code=True):
     try:
         sender.send(command)
     except Exception as e:
@@ -35,13 +35,23 @@ def process_command(sender: isotp.socket, reveiver: isotp.socket, command, respo
     t1 = time.time()
     while time.time() - t1 < read_timeout:
         try:
-            data = reveiver.recv()
+            data = receiver.recv()
             if data:
                 payload = pad_payload(data, response_length)
                 try:
                     decoded = parsed_database.decode_message(
-                        reveiver.address.rxid, payload)
-                    return decoded if decoded is not None else {}
+                        receiver.address.rxid, payload)
+                    if resend_on_wrong_response_code and decoded is not None and not decoded.get("response") == int.from_bytes(command[-2:], 'big', signed=False):
+                        decoded = process_command(
+                            sender=sender,
+                            receiver=receiver,
+                            command=command,
+                            response_length=response_length,
+                            parsed_database=parsed_database,
+                            read_timeout=read_timeout,
+                            read_pause=read_pause,
+                            resend_on_wrong_response_code=False)
+                    return decoded if decoded is not None and decoded.get("response") == int.from_bytes(command[-2:], 'big', signed=False) else {}
                 except Exception as e:
                     # pass
                     eprint(payload.hex()+": "+repr(e))
