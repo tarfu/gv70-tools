@@ -54,11 +54,19 @@ def process_command(sender: isotp.socket, reveiver: isotp.socket, command, respo
     return {}
 
 def process_BMS(app_7E4, db) -> dict:
-    return process_command(app_7E4["sender"], app_7E4["receiver"], b'\x22\x01\x01', 62, db)
+    command = b'\x22\x01\x01'
+    response = process_command(app_7E4["sender"], app_7E4["receiver"], command, 62, db)
+    if len(response) == 0:
+        eprint(f"No Data for Command: {command.hex()}")
+    return response
 
 
 def process_SOH(app_7E4, db) -> dict:
-    return process_command(app_7E4["sender"], app_7E4["receiver"], b'\x22\x01\x05', 62, db)
+    command = b'\x22\x01\x05'
+    response = process_command(app_7E4["sender"], app_7E4["receiver"], command, 62, db)
+    if len(response) == 0:
+        eprint(f"No Data for Command: {command.hex()}")
+    return response
 
 
 def process_Cell_Voltage(app_7E4, db) -> dict:
@@ -66,19 +74,34 @@ def process_Cell_Voltage(app_7E4, db) -> dict:
                 b'\x22\x01\x0A', b'\x22\x01\x0B', b'\x22\x01\x0C']
     result = {}
     for command in commands:
-        result |= process_command(app_7E4["sender"], app_7E4["receiver"], command, 62, db)
+        response = process_command(app_7E4["sender"], app_7E4["receiver"], command, 62, db)
+        if len(response) == 0:
+            eprint(f"No Data for Command: {command.hex()}")
+        result |= response
     return result
 
 
 def process_Temperatures(app_7B3, db) -> dict:
-    return process_command(app_7B3["sender"], app_7B3["receiver"], b'\x22\x01\x00', 54, db)
+    command = b'\x22\x01\x00'
+    response = process_command(app_7B3["sender"], app_7B3["receiver"], command, 54, db)
+    if len(response) == 0:
+        eprint(f"No Data for Command: {command.hex()}")
+    return response
 
 
 def process_Tires(app_7A0, db) -> dict:
-    return process_command(app_7A0["sender"], app_7A0["receiver"], b'\x22\xC0\x0B', 64, db)
+    command = b'\x22\xC0\x0B'
+    response = process_command(app_7A0["sender"], app_7A0["receiver"], command, 64, db)
+    if len(response) == 0:
+        eprint(f"No Data for Command: {command.hex()}")
+    return response
 
 def process_Odometer(app_7C6, db) -> dict:
-    return process_command(app_7C6["sender"], app_7C6["receiver"], b'\x22\xB0\x02', 64, db)
+    command = b'\x22\xB0\x02'
+    response = process_command(app_7C6["sender"], app_7C6["receiver"], command, 64, db)
+    if len(response) == 0:
+        eprint(f"No Data for Command: {command.hex()}")
+    return response
 
 def check_autopi_socketcan_and_set_up(deviceID, ifname: str) -> bool:
     ifstatus = send_autopi_command(deviceID, [f"socketcan.show", ifname])
@@ -119,7 +142,6 @@ def get_gnss(deviceID):
 
 
 def metric_from_dict(name ,messurements, time_ns):
-    print(messurements)
     metric = Metric(name)
     metric.with_timestamp(time_ns)
     if messurements is None:
@@ -268,7 +290,7 @@ def main():
                 messages.append(msg)
                 
         
-        eprint("messages("+str(len(messages))+": "+str(messages))
+        eprint(f"messages({len(messages)}) received")
         if len(messages) > 0 and not (len(message['gnss']) != 0 and len(messages) == 1): # ignore gnss for sending decission
             publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
         
