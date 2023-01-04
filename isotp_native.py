@@ -82,11 +82,13 @@ def process_Odometer(app_7C6, db) -> dict:
 
 def check_autopi_socketcan_and_set_up(deviceID, ifname: str) -> bool:
     ifstatus = send_autopi_command(deviceID, [f"socketcan.show", ifname])
+    eprint(ifstatus)
     if "error" in ifstatus:
         eprint(ifstatus)
         return False
-    if ifstatus.get("operstate", "DOWN").lower == "down":
+    if ifstatus.get("operstate", "DOWN").lower() == "down":
         upstate = send_autopi_command(deviceID, ['socketcan.up', ifname])
+        eprint(upstate)
         if "error" in upstate:
             eprint(upstate)
             return False
@@ -204,13 +206,12 @@ def main():
     if autopi_set_socketcan_up:
         could_set_up = check_autopi_socketcan_and_set_up(autopi_deviceID, can_interface)
         if  not could_set_up and autopi_die_if_can_not_set_up:
-            exit(5)
+            sys.exit(5)
     
     mqtt_auth = None if mqtt_username == None or mqtt_password == None else {"username": mqtt_username, "password": mqtt_password}
     tls = None if not mqtt_tls else {"insecure": mqtt_tls_insecure}
     
     db = cantools.database.load_file(dbc_file_path)
-    def can_bus(dev): return can.interface.Bus(dev, bustype='socketcan')
 
     app_7E4 = {"sender": isotp.socket(), "receiver": isotp.socket()} 
     app_7E4["receiver"].set_fc_opts(stmin=0, bs=0)
@@ -239,7 +240,6 @@ def main():
 
 
     while True:
-        results = []
         now_ns = time.time_ns()
         now_s = time.time()
         epoch = int(time.time())
@@ -260,7 +260,6 @@ def main():
             eprint("GNNS Error:" + message["gnss"]["error"])
             message["gnss"] = {}
         
-        mqtt_message = {}
         messages = []
 
         for key, value in message.items():
@@ -291,4 +290,4 @@ def main():
     return 0
 
 if __name__ == '__main__':
-    exit(main())
+    sys.exit(main())
