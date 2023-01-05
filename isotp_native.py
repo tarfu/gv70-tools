@@ -228,6 +228,7 @@ def main():
     mqtt_password = os.getenv("MQTT_PASSWORD")
     mqtt_topic = os.getenv("MQTT_TOPIC", "eGV70")
     mqtt_tls = os.getenv("MQTT_TLS", "False").lower() in ['true', '1', 'yes', 'y', 't']
+    mqtt_publish = os.getenv("MQTT_PUBLISH", "True").lower() in ['true', '1', 'yes', 'y', 't']
     mqtt_tls_insecure = os.getenv("MQTT_TLS_INSECURE", "False").lower() in ['true', '1', 'yes', 'y', 't']
     autopi_deviceID = os.getenv("AUTOPI_DEVICEID")
     autopi_set_socketcan_up = os.getenv("AUTOPI_SET_SOCKETCAN_UP", "True").lower() in ['true', '1', 'yes', 'y', 't']
@@ -302,7 +303,8 @@ def main():
         
         eprint(f"messages({len(messages)}) received")
         if len(messages) > 0 and not (len(message['gnss']) != 0 and len(messages) == 1): # ignore gnss for sending decission
-            publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
+            if mqtt_publish:
+                publish.multiple(messages, hostname=mqtt_host, port=int(mqtt_port), auth=mqtt_auth, client_id="egv70-metrics", protocol=mqtt.MQTTv311, tls=tls)
         
             if abrp_apikey and abrp_cartoken and time.time()>skip_abrp_epoch:
                 status = send_abrp(epoch, message, abrp_apikey, abrp_cartoken)
