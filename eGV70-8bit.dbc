@@ -66,8 +66,8 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ BatteryVoltageAuxillary m257 : 263|8@0+ (0.1,0) [11|14.6] "V" Vector__XXX
  SG_ BatteryFanFeedback m257 : 255|8@0+ (1,0) [0|120] "Hz" Vector__XXX
  SG_ BatteryFanStatus m257 : 247|8@0+ (1,0) [0|9] "" Vector__XXX
- SG_ NormalChargePort m257 : 101|1@0+ (1,0) [0|0] "" Vector__XXX
- SG_ RapidChargePort m257 : 102|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NormalChargePort m257 : 98|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RapidChargePort m257 : 97|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ OperatingTime m257 : 399|32@0+ (0.00027777777,0) [0|1000000] "hours" Vector__XXX
  SG_ StateOfHealth m261 : 231|16@0+ (0.1,0) [0|100] "%" Vector__XXX
  SG_ MaximumDeteriorationCellNo m261 : 247|8@0+ (1,0) [0|192] "" Vector__XXX
@@ -75,7 +75,7 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ MinimumDeteriorationCellNo m261 : 271|8@0+ (1,0) [0|192] "" Vector__XXX
  SG_ MinCellVoltageCellNo m257 : 239|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ MaxCellVoltageCellNo m257 : 223|8@0+ (1,0) [0|0] "" Vector__XXX
- SG_ Charging m257 : 103|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Charging m257 : 96|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ CCC_CumulativeChargeCurrent m257 : 271|32@0+ (0.1,0) [0|1000000] "Ah" Vector__XXX
  SG_ CDC_CumulativeDischargeCurrent m257 : 303|32@0+ (0.1,0) [0|1000000] "Ah" Vector__XXX
  SG_ CEC_CumulativeEnergyCharged m257 : 335|32@0+ (0.1,0) [0|1000000] "kWh" Vector__XXX
