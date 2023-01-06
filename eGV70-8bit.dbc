@@ -83,7 +83,7 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ DriveMotorSpeed1 m257 : 455|16@0- (1,0) [-10100|10100] "rpm" Vector__XXX
  SG_ DriveMotorSpeed2 m257 : 471|16@0- (1,0) [-10100|10100] "rpm" Vector__XXX
  SG_ InverterCapacitorVoltage m257 : 439|16@0+ (1,0) [0|840] "V" Vector__XXX
- SG_ BMSMainRelay m257 : 96|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMSMainRelay m257 : 103|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ BMSIgnition m257 : 426|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ BatteryDCVoltage m257 : 127|16@0+ (0.1,0) [0|0] "V" Vector__XXX
  SG_ BatteryCurrent m257 : 111|16@0- (0.1,0) [-230|230] "A" Vector__XXX
