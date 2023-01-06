@@ -37,12 +37,12 @@ BU_:
 
 
 BO_ 2028 Battery: 62 Vector__XXX
- SG_ StateOfChargeBMS m257 : 71|8@0+ (0.5,3) [0|100] "%" Vector__XXX
+ SG_ StateOfChargeBMS m257 : 71|8@0+ (0.5,0) [0|100] "%" Vector__XXX
  SG_ response m98M : 23|16@0+ (1,0) [0|0] "unit" Vector__XXX
  SG_ service M : 15|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ MinCellVoltage m257 : 239|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
  SG_ MaxCellVoltage m257 : 223|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ StateOfChargeDisplay m261 : 287|8@0+ (0.5,3) [0|0] "%" Vector__XXX
+ SG_ StateOfChargeDisplay m261 : 287|8@0+ (0.5,0) [0|0] "%" Vector__XXX
  SG_ BatteryTemperature01 m257 : 167|8@0- (1,0) [0|0] "degC" Vector__XXX
  SG_ BatteryTemperature02 m257 : 175|8@0- (1,0) [0|0] "degC" Vector__XXX
  SG_ BatteryTemperature03 m257 : 183|8@0- (1,0) [0|0] "degC" Vector__XXX
@@ -66,8 +66,8 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ BatteryVoltageAuxillary m257 : 271|8@0+ (0.1,0) [11|14.6] "V" Vector__XXX
  SG_ BatteryFanFeedback m257 : 263|8@0+ (1,0) [0|120] "Hz" Vector__XXX
  SG_ BatteryFanStatus m257 : 255|8@0+ (1,0) [0|9] "" Vector__XXX
- SG_ NormalChargePort m257 : 109|1@0+ (1,0) [0|0] "" Vector__XXX
- SG_ RapidChargePort m257 : 110|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ NormalChargePort m257 : 106|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ RapidChargePort m257 : 105|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ OperatingTime m257 : 407|32@0+ (0.00027777777,0) [0|1000000] "hours" Vector__XXX
  SG_ StateOfHealth m261 : 239|16@0+ (0.1,0) [0|100] "%" Vector__XXX
  SG_ MaximumDeteriorationCellNo m261 : 255|8@0+ (1,0) [0|192] "" Vector__XXX
@@ -75,7 +75,7 @@ BO_ 2028 Battery: 62 Vector__XXX
  SG_ MinimumDeteriorationCellNo m261 : 279|8@0+ (1,0) [0|192] "" Vector__XXX
  SG_ MinCellVoltageCellNo m257 : 247|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ MaxCellVoltageCellNo m257 : 231|8@0+ (1,0) [0|0] "" Vector__XXX
- SG_ Charging m257 : 111|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ Charging m257 : 104|1@0+ (1,0) [0|0] "" Vector__XXX
  SG_ CCC_CumulativeChargeCurrent m257 : 279|32@0+ (0.1,0) [0|1000000] "Ah" Vector__XXX
  SG_ CDC_CumulativeDischargeCurrent m257 : 311|32@0+ (0.1,0) [0|1000000] "Ah" Vector__XXX
  SG_ CEC_CumulativeEnergyCharged m257 : 343|32@0+ (0.1,0) [0|1000000] "kWh" Vector__XXX

@@ -183,7 +183,6 @@ def send_abrp(epoch, message_dict, api_token, car_token, timeout=5):
             'heading': message_dict['gnss'].get('cog'),
             'elevation': message_dict['gnss'].get('alt'),
             # battery
-            'soc': message_dict['battery'].get('StateOfChargeDisplay'),
             'power': (dc_volate * bat_current)/1000 if dc_volate * bat_current != 0 else None,
             'is_charging': message_dict['battery'].get('Charging'),
             'is_dcfc': message_dict['battery'].get('RapidChargePort'),
@@ -192,6 +191,7 @@ def send_abrp(epoch, message_dict, api_token, car_token, timeout=5):
             'current': message_dict['battery'].get('BatteryCurrent'),
             'batt_temp': message_dict['battery'].get('BatteryMinTemperature'),
             # health
+            'soc': message_dict['health'].get('StateOfChargeDisplay'),
             'soh': message_dict['health'].get('StateOfHealth'),
             # car
             'ext_temp': message_dict['temps'].get('OutdoorTemperature'),

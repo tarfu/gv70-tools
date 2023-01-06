@@ -37,12 +37,12 @@ BU_:
 
 
 BO_ 2028 Battery: 62 Vector__XXX
- SG_ StateOfChargeBMS m257 : 63|8@0+ (0.5,3) [0|100] "%" Vector__XXX
+ SG_ StateOfChargeBMS m257 : 63|8@0+ (0.5,0) [0|100] "%" Vector__XXX
  SG_ response m98M : 15|16@0+ (1,0) [0|0] "unit" Vector__XXX
  SG_ service M : 7|8@0+ (1,0) [0|0] "" Vector__XXX
  SG_ MinCellVoltage m257 : 231|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
  SG_ MaxCellVoltage m257 : 215|8@0+ (0.02,0) [2.8|4.2] "V" Vector__XXX
- SG_ StateOfChargeDisplay m261 : 279|8@0+ (0.5,3) [0|0] "%" Vector__XXX
+ SG_ StateOfChargeDisplay m261 : 279|8@0+ (0.5,0) [0|0] "%" Vector__XXX
  SG_ BatteryTemperature01 m257 : 159|8@0- (1,0) [0|0] "degC" Vector__XXX
  SG_ BatteryTemperature02 m257 : 167|8@0- (1,0) [0|0] "degC" Vector__XXX
  SG_ BatteryTemperature03 m257 : 175|8@0- (1,0) [0|0] "degC" Vector__XXX
