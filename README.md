@@ -1,5 +1,53 @@
 # gv70-tools
 
+## What is the goal?
+
+The goal of project is to have two functions:
+- put all telemetry data I can get into an mqtt boker which ships it to an influxDB.
+- Push Data to ABRP (https://abetterrouteplanner.com)
+
+The telemtry data is put into a influxDB as Grafana only has 2 weeks retention in there prometheus free tier.
+There will be other dataformats added for more flexibility.
+
+## Setup on AutoPI
+First follow the setup of: https://github.com/ugoogalizer/autopi-ioniq5/blob/8383ccfedd08e45d2940d75e5ad1481615110fc4/README.md
+The two pids described there are in the community library of autopi and you won't need to add them manualy.
+
+You also need the Docker Addon activated!
+
+### (optional) Setup datashipment from local to remote MQTT
+I use the local MQTT as a broker which then pushes the data on. So it wouldn't be hindered in shippment of data when we don't have an internet connection. Right now this goal is hindered by the fact that the ABRP shipment blocks right now.
+
+
+- In settings enable the MQTT broker (Mosquitto v1.x)
+- add the following lines to the custom config line by line to enable remote shippment from the local MQTT to a remote one: (`<placeholder>` is used to replace it with a value fitting for you (credentials and such))
+```
+connection <topic_name>
+address <remote_mqtt_host>:<remote_mqtt_port>
+topic <topic_name> out 1 "" ""
+bridge_attempt_unsubscribe false
+keepalive_interval 15
+notifications false
+restart_timeout 10
+cleansession false
+max_queued_messages 10000
+autosave_interval 300
+queue_qos0_messages true
+try_private false
+bridge_protocol_version mqttv311
+max_inflight_messages 10
+remote_username <remote_mqtt_user>
+remote_password <remote_mqtt_password>
+remote_clientid autopi-sync
+bridge_capath /etc/ssl/certs/
+bridge_insecure true
+```
+
+### add docker container to run on AutoPI
+
+TBD
+
+## Notes
 
 Shifting bits in DBC:
 ```
@@ -93,4 +141,3 @@ from(bucket: "eGV70")
   |> aggregateWindow(every: v.windowPeriod, fn: mean)
   |> yield(name: "kwh")
   ```
-  
