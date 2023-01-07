@@ -80,3 +80,17 @@ remote_clientid autopi-sync
 bridge_capath /etc/ssl/certs/
 bridge_insecure true
 ```
+
+
+kw in influx:
+```
+from(bucket: "eGV70")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "temps" or r["_measurement"] == "battery")
+  |> filter(fn: (r) => r["_field"] == "BatteryDCVoltage" or r["_field"] == "BatteryCurrent")
+  |> pivot(rowKey: ["_time"], columnKey: ["_field"], valueColumn: "_value")
+  |> map(fn: (r) => ({r with _value: (r.BatteryDCVoltage * r.BatteryCurrent) / 1000.0}))
+  |> aggregateWindow(every: v.windowPeriod, fn: mean)
+  |> yield(name: "kwh")
+  ```
+  
