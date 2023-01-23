@@ -25,7 +25,7 @@ def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
 
-def process_command(sender: isotp.socket, receiver: isotp.socket, command, response_length, parsed_database, read_timeout=1, read_pause=0.1, resend_on_wrong_response_code=True):
+def process_command(sender: isotp.socket, receiver: isotp.socket, command, response_length, parsed_database, read_timeout=0.5, read_pause=0.1, resend_on_wrong_response_code=True):
     try:
         sender.send(command)
     except Exception as e:
@@ -128,7 +128,7 @@ def check_autopi_socketcan_and_set_up(deviceID, ifname: str) -> bool:
         return True
     return True
 
-def send_autopi_command(deviceID: str, command: list):
+def send_autopi_command(deviceID: str, command: list, timeout=5):
     headers = {
         # Already added when you pass json=
         'Content-Type': 'application/json',
@@ -141,6 +141,7 @@ def send_autopi_command(deviceID: str, command: list):
             'http://localhost:9000/dongle/'+deviceID+'/execute/',
             headers=headers,
             json=json_data,
+            timeout=timeout
         )
 
         return response.json()
@@ -206,6 +207,7 @@ def send_abrp(epoch, message_dict, api_token, car_token, timeout=5):
             api_url,
             headers=headers,
             json=json_data,
+            timeout=timeout
         )
     
         return response.json()
