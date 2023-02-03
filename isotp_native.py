@@ -148,6 +148,27 @@ def send_autopi_command(deviceID: str, command: list, timeout=5):
     except Exception as e:
         return {"error": repr(e)}
 
+def get_autopi_unit_id(timeout=5) -> str:
+    headers = {
+        # Already added when you pass json=
+        'Content-Type': 'application/json',
+    }
+
+    try:
+        response = requests.get(
+            'http://localhost:9000/',
+            headers=headers,
+            timeout=timeout
+        )
+
+        unit_id = response.json().get("unit_id")
+        if not unit_id:
+            eprint(f"error getting autopi unit_id: {response.json()}")
+        return unit_id
+    except Exception as e:
+        eprint(f"error getting autopi unit_id: {repr(e)}")
+        return None
+
 def get_gnss(deviceID):
     return send_autopi_command(deviceID, ['ec2x.gnss_location'])
 
@@ -232,11 +253,15 @@ def main():
     mqtt_tls = os.getenv("MQTT_TLS", "False").lower() in ['true', '1', 'yes', 'y', 't']
     mqtt_publish = os.getenv("MQTT_PUBLISH", "True").lower() in ['true', '1', 'yes', 'y', 't']
     mqtt_tls_insecure = os.getenv("MQTT_TLS_INSECURE", "False").lower() in ['true', '1', 'yes', 'y', 't']
-    autopi_deviceID = os.getenv("AUTOPI_DEVICEID")
     autopi_set_socketcan_up = os.getenv("AUTOPI_SET_SOCKETCAN_UP", "True").lower() in ['true', '1', 'yes', 'y', 't']
     autopi_die_if_can_not_set_up = os.getenv("AUTOPI_DIE_IF_CAN_NOT_SET_UP", "True").lower() in ['true', '1', 'yes', 'y', 't']
     abrp_apikey = os.getenv("ABRP_APIKEY")
     abrp_cartoken = os.getenv("ABRP_CARTOKEN")
+
+
+    autopi_deviceID = get_autopi_unit_id()
+    if not autopi_deviceID:
+        sys.exit(5)
     
     if autopi_set_socketcan_up:
         could_set_up = check_autopi_socketcan_and_set_up(autopi_deviceID, can_interface)
