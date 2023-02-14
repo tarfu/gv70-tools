@@ -86,6 +86,11 @@ Getting GPS location in docker (yes the trailing / is needed) host networking as
 curl -vvv -X POST -H "Content-Type: application/json" -d '["ec2x.gnss_location"]' http://localhost:9000/dongle/94820371-fbcc-2338-ca38-2ca83b77c293/execute/
 ```
 
+GPS for CM4 (maybe works for others as well?)
+```
+curl -vvv -X POST -H "Content-Type: application/json" -d '["modem.connection", "gnss_location"]' http://localhost:9000/dongle/c47afd22-5ecc-5ccf-cd52-9f7e8d17517b/execute/
+```
+
 Battery signals needing more research: (response and service just here to remember those)
 ```
 BO_ 2028 Battery: 62 Vector__XXX

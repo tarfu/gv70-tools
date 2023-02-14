@@ -170,7 +170,10 @@ def get_autopi_unit_id(timeout=5) -> str:
         return None
 
 def get_gnss(deviceID):
-    return send_autopi_command(deviceID, ['ec2x.gnss_location'])
+    #for ec2x module:
+    # return send_autopi_command(deviceID, ['ec2x.gnss_location'])
+    #for le910cx module:
+    return send_autopi_command(deviceID, ['modem.connection', 'gnss_location'])
 
 
 def metric_from_dict(name ,messurements, time_ns):
