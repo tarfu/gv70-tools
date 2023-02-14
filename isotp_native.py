@@ -247,7 +247,7 @@ def main():
     
     dbc_file_path = os.getenv("DBC_FILE", "eGV70-8bit.dbc")
     can_interface = os.getenv("CAN_INTERFACE", "vcan0")
-    query_intervall = os.getenv("QUERY_INTERVAL", 10)
+    query_intervall = os.getenv("QUERY_INTERVAL", 5)
     mqtt_host = os.getenv("MQTT_HOST", "localhost")
     mqtt_port = os.getenv("MQTT_PORT", 1883)
     mqtt_username = os.getenv("MQTT_USER")
