@@ -173,7 +173,7 @@ def get_gnss(deviceID):
     #for ec2x module:
     # return send_autopi_command(deviceID, ['ec2x.gnss_location'])
     #for le910cx module:
-    return send_autopi_command(deviceID, ['modem.connection', 'gnss_location'])
+    return send_autopi_command(deviceID, ['modem.connection', 'gnss_location', 'decimal_degrees=True'])
 
 
 def metric_from_dict(name ,messurements, time_ns):
