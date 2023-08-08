@@ -194,8 +194,9 @@ def send_abrp(epoch, message_dict, api_token, car_token, timeout=5):
         'Content-Type': 'application/json', 
     }
 
-    dc_volate = message_dict['battery'].get('BatteryDCVoltage') if message_dict['battery'].get('BatteryDCVoltage') else 0
-    bat_current = message_dict['battery'].get('BatteryCurrent') if message_dict['battery'].get('BatteryCurrent') else 0
+    dc_volate = message_dict['battery'].get('BatteryDCVoltage', 0)
+    bat_current = message_dict['battery'].get('BatteryCurrent', 0)
+    is_charging = message_dict['temps'].get('VehicleSpeed', 0) <= 0 and  bat_current/1000 < 0
 
     json_data = {
         'token': car_token,
@@ -209,7 +210,7 @@ def send_abrp(epoch, message_dict, api_token, car_token, timeout=5):
             'elevation': message_dict['gnss'].get('alt'),
             # battery
             'power': (dc_volate * bat_current)/1000 if dc_volate * bat_current != 0 else None,
-            'is_charging': message_dict['battery'].get('Charging'),
+            'is_charging': is_charging,
             'is_dcfc': message_dict['battery'].get('RapidChargePort'),
             'kwh_charged': message_dict['battery'].get('CEC_CumulativeEnergyCharged'),
             'voltage': message_dict['battery'].get('BatteryDCVoltage'),
