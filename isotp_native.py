@@ -196,7 +196,7 @@ def send_abrp(epoch, message_dict, api_token, car_token, timeout=5):
 
     dc_volate = message_dict['battery'].get('BatteryDCVoltage', 0)
     bat_current = message_dict['battery'].get('BatteryCurrent', 0)
-    is_charging = message_dict['temps'].get('VehicleSpeed', 0) <= 0 and  bat_current/1000 < 0
+    is_charging = message_dict['temps'].get('VehicleSpeed', 0) <= 0 and  bat_current < 0
 
     json_data = {
         'token': car_token,
