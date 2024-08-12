@@ -219,10 +219,16 @@ def send_abrp(epoch, message_dict, api_token, car_token, timeout=5):
             # health
             'soc': message_dict['health'].get('StateOfChargeDisplay'),
             'soh': message_dict['health'].get('StateOfHealth'),
+            'soe': message_dict['battery'].get('StateOfChargeBMS', 0)/100*77.4 if message_dict['battery'].get('StateOfChargeBMS') else None,
             # car
             'ext_temp': message_dict['temps'].get('OutdoorTemperature'),
+            'cabin_temp': message_dict['temps'].get('IndoorTemperature'),
             'odometer': message_dict['car'].get('Odometer'),
             'speed': message_dict['temps'].get('VehicleSpeed'),
+            'tire_pressure_fl': message_dict['tires'].get('TirePressureFrontLeft', 0) * 6.8947572932 if message_dict['tires'].get('TirePressureFrontLeft') else None,
+            'tire_pressure_fr': message_dict['tires'].get('TirePressureFrontRight', 0) * 6.8947572932 if message_dict['tires'].get('TirePressureFrontRight') else None,
+            'tire_pressure_rl': message_dict['tires'].get('TirePressureBackLeft', 0) * 6.8947572932 if message_dict['tires'].get('TirePressureBackLeft') else None,
+            'tire_pressure_rr': message_dict['tires'].get('TirePressureBackRight', 0) * 6.8947572932 if message_dict['tires'].get('TirePressureBackRight') else None,
         }
     }
     
