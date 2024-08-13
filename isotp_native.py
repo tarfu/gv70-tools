@@ -310,7 +310,7 @@ def main():
 
 
     last_gnss_time = ""
-    gnss_time_stuck_count = 0
+    gnss__stuck_time = 0
     while True:
         now_ns = time.time_ns()
         now_s = time.time()
@@ -334,11 +334,16 @@ def main():
         
         if last_gnss_time == message["gnss"].get("time_utc"):
             message["gnss"] = {}
-            gnss_time_stuck_count += 1
+            if gnss__stuck_time == 0:
+                gnss__stuck_time = epoch
             eprint(f"GNSS: No updated Position available leaving gnss out")
+            if epoch - gnss__stuck_time > 180: # stuck for 3 minutes we want to reboot
+                eprint("GNSS: Stuck for 3 minutes resetting")
+                gnss__stuck_time = 0
+                send_autopi_command(autopi_deviceID, ['modem.reset', 'mode=one_shot'])
         else:
             last_gnss_time = message["gnss"].get("time_utc")
-            gnss_time_stuck_count = 0
+            gnss__stuck_time = 0
 
         messages = []
 
