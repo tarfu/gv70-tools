@@ -309,6 +309,8 @@ def main():
     app_7C6["receiver"].bind(can_interface, isotp.Address(isotp.AddressingMode.Normal_11bits, rxid=0x7CE, txid=0x7C6))
 
 
+    last_gnss_time = ""
+    gnss_time_stuck_count = 0
     while True:
         now_ns = time.time_ns()
         now_s = time.time()
@@ -330,6 +332,14 @@ def main():
             eprint("GNNS Error:" + message["gnss"]["error"])
             message["gnss"] = {}
         
+        if last_gnss_time == message["gnss"].get("time_utc"):
+            message["gnss"] = {}
+            gnss_time_stuck_count += 1
+            eprint(f"GNSS: No updated Position available leaving gnss out")
+        else:
+            last_gnss_time = message["gnss"].get("time_utc")
+            gnss_time_stuck_count = 0
+
         messages = []
 
         for key, value in message.items():
