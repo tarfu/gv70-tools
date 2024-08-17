@@ -40,7 +40,7 @@ def process_command(sender: isotp.socket, receiver: isotp.socket, command, respo
                 payload = pad_payload(data, response_length)
                 try:
                     decoded = parsed_database.decode_message(
-                        receiver.address._rxid, payload)
+                        receiver.address.rxid, payload)
                     if resend_on_wrong_response_code and decoded is not None and not decoded.get("response") == int.from_bytes(command[-2:], 'big', signed=False):
                         decoded = process_command(
                             sender=sender,

@@ -1,6 +1,6 @@
-can
-can-isotp
-cantools
-influx_line_protocol
-paho-mqtt
-requests
+can==0.0.0
+can-isotp==1.9
+cantools==39.4.2
+influx-line-protocol==0.1.5
+paho-mqtt==1.6.1
+requests==2.31.0
