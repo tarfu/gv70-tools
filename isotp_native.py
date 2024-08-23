@@ -267,6 +267,8 @@ def main():
     autopi_die_if_can_not_set_up = os.getenv("AUTOPI_DIE_IF_CAN_NOT_SET_UP", "True").lower() in ['true', '1', 'yes', 'y', 't']
     abrp_apikey = os.getenv("ABRP_APIKEY")
     abrp_cartoken = os.getenv("ABRP_CARTOKEN")
+    reset_modem_on_gps_stuck = os.getenv("RESET_MODEM_ON_GPS_STUCK", "True").lower() in ['true', '1', 'yes', 'y', 't']
+
 
 
     autopi_deviceID = get_autopi_unit_id()
@@ -332,7 +334,7 @@ def main():
             eprint("GNNS Error:" + message["gnss"]["error"])
             message["gnss"] = {}
         
-        if last_gnss_time == message["gnss"].get("time_utc"):
+        if last_gnss_time == message["gnss"].get("time_utc") and reset_modem_on_gps_stuck:
             message["gnss"] = {}
             if gnss__stuck_time == 0:
                 gnss__stuck_time = epoch
